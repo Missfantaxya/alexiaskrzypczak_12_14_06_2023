@@ -1,0 +1,25 @@
+.navVertical{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 8.125vw;
+  height: 100%;
+  background-color: var(--dark-color);
+  padding-bottom: 10.25vh;
+}
+
+.navButtons{
+  margin:auto;
+}
+
+
+.copyright{
+  color: var(--light-color);
+  font-weight: 500;
+  font-size: 1.17vh;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  position: absolute;
+  bottom: 5.76vh;
+}

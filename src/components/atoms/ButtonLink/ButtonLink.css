@@ -1,0 +1,10 @@
+.buttonLink{
+  width: 4.44vw;
+  height: 4.44vw;
+  background-color: var(--light-color);
+  border-radius: 6px;
+}
+
+.buttonLink__img{
+  height: 3.125vh;
+}

@@ -1,0 +1,8 @@
+.navButtons{
+  width: 4.44vw;
+  height: 30.86vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

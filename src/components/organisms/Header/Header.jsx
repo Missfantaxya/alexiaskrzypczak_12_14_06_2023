@@ -1,12 +1,12 @@
 import "./Header.css"
 import Logo from "../../atoms/Logo/Logo"
-import Nav from "../../molecules/Nav/Nav"
+import NavLinks from "../../molecules/NavLinks/NavLinks"
 
 export default function Header(props) {
   return (
     <header className="header">
       <Logo />
-      <Nav />
+      <NavLinks />
     </header>
     )
 }
