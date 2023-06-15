@@ -14,7 +14,7 @@
 
 
 .copyright{
-  color: var(--light-color);
+  color: var(--light-color-text);
   font-weight: 500;
   font-size: 1.17vh;
   writing-mode: vertical-rl;

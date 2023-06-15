@@ -4,27 +4,39 @@
   --light-color: #FFFFFF;
   --dark-color: #020203;
   --main-color: #FF0101;
-  --dark-text: #000000;
-  --light-text: #FFFFFF;
-  --radar-background: #282D30;
-  --radar-data-zone: rgba(255, 1, 1, 0.7);
-  --radar-line: #FFFFFF;
-  --radar-text: #FFFFFF;
-  --kpi-title: #20253A;
-  --kpi-data-text: #282D30;
-  --kpi-data-line: #FF0000;
-  --kpi-data-background: #FFFFFF;
-  --kpi-background: #FBFBFB;
-  --objectif-data-text: #000000;
-  --objextif-data-background: #FFFFFF;
-  --objectif-text:#FFFFFF;
-  --objectif-data-line:#FFFFFF;
-  --objectif-mask-line: #D8D8D8;
-  --objectif-mask-background: #000000;
-  --objectif-background: #FF0000;
-  --weight-tooltips-text: #FFFFFF;
-  --weight-tooltips-background: #E60000;
+
+  --dark-color-text: #000000;
+  --light-color-text: #FFFFFF;
+
+  --dark-color-radar: #282D30;
+  --main-color-radar: #FF0101;
+  --light-color-radar: #FFFFFF;
+
+  --title-color-kpi: #20253A;
+  --data-color-kpi: #282D30;
+  --text-color-kpi: #74798C;
+  --main-color-kpi: #FF0000;
+  --circle-background-kpi: #FFFFFF;
+  --background-color-kpi: #FBFBFB;
   
+  --mask-color-objectif: #D8D8D8;
+  --light-color-objectif:#FFFFFF;
+  --dark-color-objectif: #000000;
+  --main-color-objectif: #FF0000;
+
+  --light-text-weight: #FFFFFF;
+  --main-color-weight: #E60000;
+  --title-color-weight:#20253A;
+  --weight-legend-text: #74798C;
+  --scale-color-weight: #9B9EAC;
+  --dark-color-weight: #282D30;
+  --overline-color-weight: #C4C4C4;
+  --axes-color-weight: #DEDEDE;
+  --background-color-weight: #FBFBFB;
+
+  --background-color-card: #FBFBFB;
+  --title-color-card: #74798C;
+  --dark-color-card: #282D30;
 }
 
 body{
