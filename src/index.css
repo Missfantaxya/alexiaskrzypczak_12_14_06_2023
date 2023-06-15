@@ -7,6 +7,7 @@
 
   --dark-color-text: #000000;
   --light-color-text: #FFFFFF;
+  --main-color-text: #FF0101;
 
   --dark-color-radar: #282D30;
   --main-color-radar: #FF0101;
@@ -41,4 +42,5 @@
 
 body{
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }

@@ -1,0 +1,23 @@
+.dashboard {
+  margin: 6.64vh 6.25vw 8.398vh 7.43vw;
+  width: 78.194vw;
+  height: 76.074vh;
+}
+
+.dashboard__results {
+  display: flex;
+}
+
+.dashboard__graphics {
+  display: flex;
+  flex-direction: column;
+}
+
+.graphics__squares {
+  display: flex;
+}
+
+.results__nutrition {
+  display: flex;
+  flex-direction: column;
+}

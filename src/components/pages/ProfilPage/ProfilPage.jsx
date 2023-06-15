@@ -4,7 +4,7 @@ import ProfilTemplate from "../../templates/ProfilTemplate/ProfilTemplate"
 export default function ProfilPage(props) {
   return (
     <>
-      <ProfilTemplate />
+      <ProfilTemplate firstname="Thomas" />
     </>
     )
 }

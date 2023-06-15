@@ -1,0 +1,6 @@
+.dashboard__header {
+  height: 8.69vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

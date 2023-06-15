@@ -1,0 +1,8 @@
+.welcomeTitle {
+  font-size: 4.6875vh;
+  
+}
+
+.welcomeTitle__firstname {
+  color: var(--main-color-text);
+}
