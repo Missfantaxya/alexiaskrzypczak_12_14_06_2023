@@ -1,12 +1,15 @@
 import { useState } from 'react'
+
+import Logo from './components/atoms/Logo/Logo'
+import ProfilPage from './components/pages/ProfilPage/ProfilPage'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className='App'>
-      Vite App WIP
+      <ProfilPage />
     </div>
   )
 }
