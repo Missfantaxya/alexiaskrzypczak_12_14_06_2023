@@ -1,5 +1,8 @@
 import "./Dashboard.css"
 import DashboardHeader from "../../molecules/DashboardHeader/DashboardHeader"
+import GraphicBar from "../../molecules/GraphicBar/GraphicBar"
+import GraphicsSquares from "../../molecules/GraphicsSquares/GraphicsSquares"
+import GraphicSquare from "../../molecules/GraphicSquare/GraphicSquare"
 import ResultsNutrition from "../../molecules/ResultsNutrition/ResultsNutrition"
 
 export default function Dashboard ( props )
@@ -10,12 +13,12 @@ export default function Dashboard ( props )
       <DashboardHeader firstname={ props.firstname } />
       <div className="dashboard__results">
         <div className="dashboard__graphics">
-          <div className="graphic__bar"></div>
-          <div className="graphics__squares">
-            <div className="graphic__square"></div>
-            <div className="graphic__square"></div>
-            <div className="graphic__square"></div>
-          </div>
+          <GraphicBar></GraphicBar>
+          <GraphicsSquares>
+            <GraphicSquare></GraphicSquare>
+            <GraphicSquare></GraphicSquare>
+            <GraphicSquare></GraphicSquare>
+          </GraphicsSquares>
         </div>
         <ResultsNutrition
           calories={ props.calories }
