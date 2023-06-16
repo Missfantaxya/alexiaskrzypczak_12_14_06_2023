@@ -1,12 +1,7 @@
 import "./ResultsNutrition.css"
 import Card from "../../atoms/Card/Card"
 
-// quand retour d'internet :
-// voir pour transmettre les data des qté dans le tableau cardArray par
-// héritage. 
 
-
-  
 export default function ResultsNutrition ( props )
 {
 const cardArray = [
