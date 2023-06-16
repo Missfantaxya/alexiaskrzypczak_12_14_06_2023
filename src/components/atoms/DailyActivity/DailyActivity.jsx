@@ -3,6 +3,7 @@ import
   {
     ResponsiveContainer,
     BarChart,
+    CartesianGrid,
     XAxis,
     YAxis,
     Tooltip,
@@ -56,23 +57,46 @@ export default function DailyActivity ( props )
       "calories": 390
     }
   ]
+
   return (
     <>
       <ResponsiveContainer>
-        <BarChart data={dataSessions} width="100%" height="100%" >
+        <BarChart
+          data={ dataSessions }
+          width="100%"
+          height="100%"
+          barCategoryGap={8}
+        >
+          <CartesianGrid vertical={false} strokeDasharray="3 3" />
           <XAxis dataKey="id" />
-          <YAxis yAxisId="right" orientation="right" />
+          <YAxis yAxisId="right"
+            orientation="right"
+            axisLine={ false }
+            tickLine={ false }
+            tickCount={3}
+          />
           <YAxis yAxisId="left" hide={ true } />
           <Tooltip />
-          <Legend />
+          <Legend
+            verticalAlign="top"
+            align="right"
+            height={ 14 }
+            iconType="circle"
+            iconSize={8}
+
+          />
           <Bar
             dataKey="kilogram"
             yAxisId="right"
+            barSize={ 7 }
+            radius={[3, 3, 0, 0]}
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--dark-color-weight' ) }
           />
           <Bar
             dataKey="calories"
             yAxisId="left"
+            barSize={ 7 }
+            radius={[3, 3, 0, 0]}
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-weight' ) }
           />
         </BarChart>
