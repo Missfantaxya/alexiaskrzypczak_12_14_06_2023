@@ -1,5 +1,5 @@
 import "./NavButtons.css"
-import ButtonLink from "../../atoms/ButtonLink/ButtonLink"
+import ActivityButton from "../../atoms/ActivityButton/ActivityButton"
 
 export default function NavButtons ( props )
 {
@@ -13,7 +13,7 @@ export default function NavButtons ( props )
       <ul className="navButtons">
         { buttons.map( ( item ) => (
             <li key={ item.id }>
-              <ButtonLink src={item.src} alt={ item.name } />
+              <ActivityButton src={item.src} alt={ item.name } />
             </li>
           ) ) }
       </ul>
