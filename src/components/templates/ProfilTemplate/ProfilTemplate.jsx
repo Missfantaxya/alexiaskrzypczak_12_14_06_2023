@@ -9,7 +9,10 @@ export default function ProfileTemplate(props) {
       <Header />
       <main className="main">
         <NavVertical />
-        <Dashboard firstname={ props.firstname } />
+        <Dashboard
+          firstname={ props.firstname }
+          nutriData={ props.nutriData }
+        />
       </main>
     </div>
     )

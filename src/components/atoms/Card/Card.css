@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--background-color-card);
+  width: 17.916vw;
+  height: 12.11vh;
+  border-radius: 5px;
+}
+
+.card__picture {
+  width: 4.167vw;
+  margin:  2.22vw;
+  margin-right: 1.666vw;
+}
+
+.card__data {
+  font-weight: 700;
+  font-size: 1.953vh;
+}
+
+.card__title {
+  color:var(--title-color-card);
+  font-size: 1.367vh;
+}

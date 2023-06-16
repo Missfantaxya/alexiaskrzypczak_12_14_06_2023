@@ -2,19 +2,42 @@
   margin: 6.64vh 6.25vw 8.398vh 7.43vw;
   width: 78.194vw;
   height: 76.074vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .dashboard__results {
   display: flex;
+  justify-content: space-between;
+  height: 59.863vh;
 }
 
 .dashboard__graphics {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  width: 57.986vw;
+}
+
+.graphic__bar {
+  width: 100%;
+  height: 31.25vh;
+  border-radius: 5px;
+  background-color: lightgray;
 }
 
 .graphics__squares {
   display: flex;
+  justify-content: space-between;
+  height: 25.683vh;
+}
+
+.graphic__square{
+  height: 100%;
+  width: 17.917vw;
+  border-radius: 5px;
+  background-color: lightgray;
 }
 
 .results__nutrition {
