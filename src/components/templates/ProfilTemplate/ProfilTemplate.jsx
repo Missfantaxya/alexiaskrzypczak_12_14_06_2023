@@ -11,7 +11,10 @@ export default function ProfileTemplate(props) {
         <NavVertical />
         <Dashboard
           firstname={ props.firstname }
-          nutriData={ props.nutriData }
+          calories={ props.calories }
+          proteins={ props.proteins }
+          carbs={ props.carbs }
+          fats={ props.fats }
         />
       </main>
     </div>
