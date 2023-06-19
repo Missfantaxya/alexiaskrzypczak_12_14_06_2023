@@ -1,7 +1,12 @@
 .graphic__bar {
-  width: 100%;
+  width: 57.91vw;
   height: 31.25vh;
   border-radius: 5px;
-  /* background-color: lightgray; */
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  background-color: var(--background-color-weight);
+
+  /* ----- Pour construction -----*/
   border: 1px solid red;
 }

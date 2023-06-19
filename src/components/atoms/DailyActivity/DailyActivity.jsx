@@ -1,4 +1,4 @@
-import "./DailyActivity"
+import "./DailyActivity.css"
 import
   {
     ResponsiveContainer,
@@ -60,44 +60,68 @@ export default function DailyActivity ( props )
 
   return (
     <>
-      <ResponsiveContainer>
+      <ResponsiveContainer
+      >
         <BarChart
-          data={ dataSessions }
-          width="100%"
-          height="100%"
-          barCategoryGap={8}
+          data= { dataSessions }
+          barCategoryGap={ 8 }
+          margin={{ top: 95, right: 29, bottom: 23, left: 43 }}
         >
-          <CartesianGrid vertical={false} strokeDasharray="3 3" />
-          <XAxis dataKey="id" />
-          <YAxis yAxisId="right"
-            orientation="right"
-            axisLine={ false }
-            tickLine={ false }
-            tickCount={3}
+          <CartesianGrid vertical= {false} strokeDasharray= "3 3" />
+          <XAxis
+            dataKey="id"
+            tickCount={ 7 }
+            type="number"
+            domain={ "dataMin, dataMax" }
+            // TODO changer la couleur des étiquettes
           />
-          <YAxis yAxisId="left" hide={ true } />
+          <YAxis
+            yAxisId="right"
+            orientation= "right"
+            axisLine= { false }
+            tickLine= { false }
+            tickCount={ 3 }
+            type= "number"
+            domain={ [ "dataMin - 2", "dataMax + 1" ] }
+            tickMargin={ 31.64 } 
+            // TODO changer la couleur des étiquettes
+            tick={{ className: "barChart__label" }} //!
+            // tick={ { style: { color: "green" } } } //!
+            color="pink" //!
+            // fill: `{ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' )}` 
+          />
+          <YAxis
+            yAxisId="left"
+            hide={ true }
+            type= "number"
+            domain={ [ 0, 'dataMax + 10' ] }
+          />
           <Tooltip />
           <Legend
             verticalAlign="top"
             align="right"
-            height={ 14 }
+            width={277}
+            height={24}
             iconType="circle"
-            iconSize={8}
-
+            iconSize={ 8 }
+            wrapperStyle={ { top: "2.34vh", right:"1.8vw", bottom: 0 } }
+            formatter={ ( value, entry ) => (
+              <span className="barChart__legend">{entry.dataKey === 'kilogram' ? `Poids (kg)` : `Calories brûlées (kCal)`}</span>
+            ) }
           />
           <Bar
-            dataKey="kilogram"
-            yAxisId="right"
-            barSize={ 7 }
-            radius={[3, 3, 0, 0]}
-            fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--dark-color-weight' ) }
+            dataKey= "kilogram"
+            yAxisId= "right"
+            barSize= { 7 }
+            radius= {[3, 3, 0, 0]}
+            fill= { getComputedStyle( document.documentElement ).getPropertyValue( '--dark-color-weight' ) }
           />
           <Bar
-            dataKey="calories"
-            yAxisId="left"
-            barSize={ 7 }
-            radius={[3, 3, 0, 0]}
-            fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-weight' ) }
+            dataKey= "calories"
+            yAxisId= "left"
+            barSize= { 7 }
+            radius= {[3, 3, 0, 0]}
+            fill= { getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-weight' ) }
           />
         </BarChart>
       </ResponsiveContainer>

@@ -1,0 +1,8 @@
+.barChart__legend{
+  color: var(--weight-legend-text);
+  font-size: 14px;
+}
+
+.barChart__label{
+  fill: blue;
+}
