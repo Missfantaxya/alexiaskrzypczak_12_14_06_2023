@@ -10,7 +10,7 @@ import {
   
 export default function SessionDuration ( props )
 {
-  const sessions= [
+  const dataSessions= [
     {
       "day": 1,
       "sessionLength": 30
@@ -43,22 +43,18 @@ export default function SessionDuration ( props )
 
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      
+      <ResponsiveContainer>
         <LineChart
-          data={ sessions }
+          data={ dataSessions }
           width="100%"
           height="100%"
         >
-          <XAxis dataKey= "day" />
-          <YAxis />
-          <Tooltip />
           <Line
-            dataKey="sessionlength"
             type="monotone"
-            stroke="#FFFFFF"
-            // stroke={ getComputedStyle( document.documentElement
-          // ).getPropertyValue( '--light-color-objectif' ) } 
-        />
+            dataKey="sessionLength"
+            stroke= { getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ) }
+          />
         </LineChart>
       </ResponsiveContainer>
     </>

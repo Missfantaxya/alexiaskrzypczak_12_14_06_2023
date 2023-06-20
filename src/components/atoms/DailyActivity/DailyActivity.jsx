@@ -13,7 +13,7 @@ import
 
 export default function DailyActivity ( props )
 {
-  const dataSessions = [
+  const dataWeight = [
     {
       "id":1,
       "day": '2020-07-01',
@@ -63,7 +63,7 @@ export default function DailyActivity ( props )
       <ResponsiveContainer
       >
         <BarChart
-          data= { dataSessions }
+          data= { dataWeight }
           barCategoryGap={ 8 }
           margin={{ top: 95, right: 29, bottom: 23, left: 43 }}
         >
