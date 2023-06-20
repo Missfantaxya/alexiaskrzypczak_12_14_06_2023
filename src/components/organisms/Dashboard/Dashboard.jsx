@@ -4,6 +4,7 @@ import GraphicBar from "../../molecules/GraphicBar/GraphicBar"
 import GraphicsSquares from "../../molecules/GraphicsSquares/GraphicsSquares"
 import DailyActivity from "../../atoms/DailyActivity/DailyActivity"
 import GraphicSquare from "../../molecules/GraphicSquare/GraphicSquare"
+import SessionDuration from "../../atoms/SessionDuration/SessionDuration"
 import ResultsNutrition from "../../molecules/ResultsNutrition/ResultsNutrition"
 
 export default function Dashboard ( props )
@@ -18,7 +19,9 @@ export default function Dashboard ( props )
             <DailyActivity />
           </GraphicBar>
           <GraphicsSquares>
-            <GraphicSquare></GraphicSquare>
+            <GraphicSquare>
+              <SessionDuration />
+            </GraphicSquare>
             <GraphicSquare></GraphicSquare>
             <GraphicSquare></GraphicSquare>
           </GraphicsSquares>

@@ -6,7 +6,4 @@
   justify-content: center;
   align-items: end;
   background-color: var(--background-color-weight);
-
-  /* ----- Pour construction -----*/
-  border: 1px solid red;
 }

@@ -1,6 +1,9 @@
 .graphic__square{
   height: 100%;
   width: 17.917vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   background-color: lightgray;
 }
