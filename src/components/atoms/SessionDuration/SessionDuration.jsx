@@ -41,22 +41,51 @@ export default function SessionDuration ( props )
     }
   ]
 
+  const dayLabels = {
+    1: 'L',
+    2: 'M',
+    3: 'M',
+    4: 'J',
+    5: 'V',
+    6: 'S',
+    7: 'D'
+  }
+  
+  const CustomAxisTick = ({ x, y, payload }) => {
+    const label = dayLabels[ payload.value ]
+    
+    return (
+      <text x={x} y={y + 16} textAnchor="middle" fill="#FFF" fontSize="12">
+        {label}
+      </text>
+    )
+  }
+
   return (
-    <>
-      
-      <ResponsiveContainer>
+    <div className="graph__weight">
+      <ResponsiveContainer
+        width="100%"
+        height="80%"
+      >
         <LineChart
           data={ dataSessions }
           width="100%"
           height="100%"
         >
+          <XAxis
+            dataKey="day"
+            axisLine= { false }
+            tickLine= { false }
+            tick={<CustomAxisTick />}
+          />
           <Line
             type="monotone"
+            dot={false}
             dataKey="sessionLength"
             stroke= { getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ) }
           />
         </LineChart>
       </ResponsiveContainer>
-    </>
+    </div>
   )
 }
