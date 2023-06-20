@@ -57,6 +57,49 @@ export default function DailyActivity ( props )
       "calories": 390
     }
   ]
+  
+  const dayLabels = {
+    '2020-07-01': '1',
+    '2020-07-02': '2',
+    '2020-07-03': '3',
+    '2020-07-04': '4',
+    '2020-07-05': '5',
+    '2020-07-06': '6',
+    '2020-07-07': '7'
+  }
+
+  const CustomAxisTick = ({ x, y, payload }) => {
+    const label = dayLabels[payload.value];
+
+    return (
+      <text
+        x={ x }
+        y={ y + 16 }
+        textAnchor="middle"
+        fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
+        fontSize="14"
+      >
+        {label}
+      </text>
+    )
+  }
+
+  const CustomYAxisTick = ( { x, y, payload } ) =>
+  {
+    const { value } = payload
+    
+    return(
+      <text
+        x={ x }
+        y={ y }
+        fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
+        fontSize={ 14 }
+        textAnchor="end"
+      >
+        {value}
+      </text>
+    )
+  }
 
   return (
     <>
@@ -69,11 +112,12 @@ export default function DailyActivity ( props )
         >
           <CartesianGrid vertical= {false} strokeDasharray= "3 3" />
           <XAxis
-            dataKey="id"
+            dataKey="day"
             tickCount={ 7 }
-            type="number"
+            tickLine= { false }
             domain={ "dataMin, dataMax" }
-            // TODO changer la couleur des étiquettes
+            tick={<CustomAxisTick />}
+            axisLine={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
           />
           <YAxis
             yAxisId="right"
@@ -84,11 +128,7 @@ export default function DailyActivity ( props )
             type= "number"
             domain={ [ "dataMin - 2", "dataMax + 1" ] }
             tickMargin={ 31.64 } 
-            // TODO changer la couleur des étiquettes
-            tick={{ className: "barChart__label" }} //!
-            // tick={ { style: { color: "green" } } } //!
-            color="pink" //!
-            // fill: `{ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' )}` 
+            tick={<CustomYAxisTick />}
           />
           <YAxis
             yAxisId="left"
