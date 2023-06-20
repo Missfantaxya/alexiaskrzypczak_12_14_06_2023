@@ -70,7 +70,8 @@ export default function DailyActivity ( props )
 
   const CustomAxisTick = ({ x, y, payload }) => {
     const label = dayLabels[payload.value];
-
+    
+    // TODO ajouter le titre
     return (
       <text
         x={ x }
