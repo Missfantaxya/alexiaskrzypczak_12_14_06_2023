@@ -9,3 +9,16 @@
   left: 2.22vw;
   font-size: 15px;
 }
+
+.weight__customTooltip{
+  color: var(--light-text-weight);
+  background-color: var(--main-color-weight);
+  width: 2.71vw;
+  height: 6.15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.68vh;
+  line-height: 2.34vh;
+}
