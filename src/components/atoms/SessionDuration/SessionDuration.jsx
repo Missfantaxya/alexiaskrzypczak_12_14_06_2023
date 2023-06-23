@@ -3,11 +3,12 @@ import {
   ResponsiveContainer,
   LineChart,
   XAxis,
-  YAxis,
   Line,
   Tooltip
 } from "recharts"
   
+//TODO ajouter un écart au labels des absisses avec les bords du graph
+//TODO faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
   const dataSessions= [
@@ -53,7 +54,7 @@ export default function SessionDuration ( props )
   
   const CustomAxisTick = ({ x, y, payload }) => {
     const label = dayLabels[ payload.value ]
-    
+    // TODO mettre ce que je peux dans le fichier css
     return (
       <text x={x} y={y + 16} textAnchor="middle" fill="#FFF" fontSize="12">
         {label}
@@ -61,9 +62,23 @@ export default function SessionDuration ( props )
     )
   }
 
+   const CustomTooltip = ( { active, payload, label } ) =>
+  {
+    if (active && payload && payload.length){
+      const data = payload[ 0 ].payload // Données du point survolé
+      
+      return (
+        <div className="lenght__customTooltip" >
+          <p className="lenght__tooltipValue">{`${data.sessionLength}min`}</p>
+        </div>
+      )
+    }
+    return null
+  }
+
   return (
-    <div className="graph__weight">
-      <h3 className="weight__title">
+    <div className="graph__lenght">
+      <h3 className="lenght__title">
         Durrée emoyenne des sessions
       </h3>
       <ResponsiveContainer
@@ -79,8 +94,9 @@ export default function SessionDuration ( props )
             dataKey="day"
             axisLine= { false }
             tickLine= { false }
-            tick={<CustomAxisTick />}
+            tick={ <CustomAxisTick /> }
           />
+          <Tooltip content={ <CustomTooltip /> } />
           <Line
             type="monotone"
             dot={false}

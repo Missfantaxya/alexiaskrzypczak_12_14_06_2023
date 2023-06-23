@@ -1,4 +1,4 @@
-.graph__weight{
+.graph__lenght{
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -9,13 +9,23 @@
   position: relative;
 }
 
-.weight__title {
+.lenght__title {
   width: 10.21vw;
   height: 4.69vh;
   position: absolute;
-  color: var(--light-text-weight);
+  color: var( --light-color-objectif);
   font-size: 1.46vh;
   line-height: 2.34vh;
   top: 2.83vh;
   left: 2.36vw;
+}
+
+.lenght__customTooltip{
+  background-color: var(--light-color-objectif);
+  font-size: 0.78vh;
+  padding: 0 0.47vw;
+  height: 2.44vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

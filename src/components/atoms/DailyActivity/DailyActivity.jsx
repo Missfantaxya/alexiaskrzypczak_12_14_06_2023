@@ -154,9 +154,7 @@ export default function DailyActivity ( props )
               type= "number"
               domain={ [ 0, 'dataMax + 10' ] }
             />
-          <Tooltip
-            content={ <CustomTooltip /> }
-          />
+          <Tooltip content={ <CustomTooltip /> } />
             <Legend
               verticalAlign="top"
               align="right"
