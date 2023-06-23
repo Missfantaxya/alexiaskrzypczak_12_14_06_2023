@@ -5,7 +5,7 @@ export default function DashboardHeader({firstname}) {
   return (
     <header className="dashboard__header">
       <WelcomeTitle firstname={ firstname } />
-      <p>Félicitaion ! Vous avez exploseé vos objectifs hier (ajouter émoticon)</p>
+      <p>Félicitaion ! Vous avez exploseé vos objectifs hier 👏</p>
     </header>
   )
 }
