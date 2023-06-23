@@ -1,8 +1,21 @@
 .graph__weight{
   width: 100%;
   height: 100%;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: end;
   background-color: var(--main-color-objectif);
+  position: relative;
+}
+
+.weight__title {
+  width: 10.21vw;
+  height: 4.69vh;
+  position: absolute;
+  color: var(--light-text-weight);
+  font-size: 1.46vh;
+  line-height: 2.34vh;
+  top: 2.83vh;
+  left: 2.36vw;
 }

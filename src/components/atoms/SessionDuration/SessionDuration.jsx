@@ -63,6 +63,9 @@ export default function SessionDuration ( props )
 
   return (
     <div className="graph__weight">
+      <h3 className="weight__title">
+        Durrée emoyenne des sessions
+      </h3>
       <ResponsiveContainer
         width="100%"
         height="80%"
