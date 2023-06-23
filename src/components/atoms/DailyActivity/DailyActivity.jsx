@@ -8,7 +8,8 @@ import
     YAxis,
     Tooltip,
     Legend,
-    Bar
+    Bar,
+    Text
   } from "recharts"
 
 export default function DailyActivity ( props )
@@ -104,6 +105,9 @@ export default function DailyActivity ( props )
 
   return (
     <>
+      <h3 className="bar__title">
+        Activité quotidienne
+      </h3>
       <ResponsiveContainer
       >
         <BarChart
@@ -164,6 +168,9 @@ export default function DailyActivity ( props )
             radius= {[3, 3, 0, 0]}
             fill= { getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-weight' ) }
           />
+          {/* <Text width={50} height={50} textAnchor="middle" dominantBaseline="middle">
+            Activité quotidienne
+          </Text> */}
         </BarChart>
       </ResponsiveContainer>
     </>

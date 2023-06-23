@@ -3,3 +3,9 @@
   font-size: 14px;
 }
 
+.bar__title{
+  position: absolute;
+  top: 2.34vh;
+  left: 2.22vw;
+  font-size: 15px;
+}
