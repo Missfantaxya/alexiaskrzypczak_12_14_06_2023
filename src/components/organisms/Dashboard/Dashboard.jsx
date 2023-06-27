@@ -6,6 +6,8 @@ import DailyActivity from "../../atoms/DailyActivity/DailyActivity"
 import GraphicSquare from "../../molecules/GraphicSquare/GraphicSquare"
 import SessionDuration from "../../atoms/SessionDuration/SessionDuration"
 import ResultsNutrition from "../../molecules/ResultsNutrition/ResultsNutrition"
+import Performances from "../../atoms/Performances/Performances"
+import Score from "../../atoms/Score/Score"
 
 export default function Dashboard ( props )
 {
@@ -22,8 +24,12 @@ export default function Dashboard ( props )
             <GraphicSquare>
               <SessionDuration />
             </GraphicSquare>
-            <GraphicSquare></GraphicSquare>
-            <GraphicSquare></GraphicSquare>
+            <GraphicSquare>
+              <Performances />
+            </GraphicSquare>
+            <GraphicSquare>
+              <Score />
+            </GraphicSquare>
           </GraphicsSquares>
         </div>
         <ResultsNutrition
