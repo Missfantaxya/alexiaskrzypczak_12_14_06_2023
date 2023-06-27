@@ -62,14 +62,16 @@ export default function SessionDuration ( props )
     )
   }
 
-   const CustomTooltip = ( { active, payload, label } ) =>
+  const CustomTooltip = ( { active, payload, label } ) =>
   {
-    if (active && payload && payload.length){
-      const data = payload[ 0 ].payload // Données du point survolé
+    if ( active && payload && payload.length )
+    {
+      // Données du point survolé
+      const data = payload[ 0 ].payload 
       
       return (
         <div className="lenght__customTooltip" >
-          <p className="lenght__tooltipValue">{`${data.sessionLength}min`}</p>
+          <p className="lenght__tooltipValue">{`${data.sessionLength} min`}</p>
         </div>
       )
     }
@@ -96,7 +98,10 @@ export default function SessionDuration ( props )
             tickLine= { false }
             tick={ <CustomAxisTick /> }
           />
-          <Tooltip content={ <CustomTooltip /> } />
+          <Tooltip
+            content={ <CustomTooltip /> }
+            cursor={ false }
+          />
           <Line
             type="monotone"
             dot={false}
