@@ -8,5 +8,5 @@
 .performances__kindTicks{
   fill: var(--light-color-radar);
   font-size: 1.17vh;
-  transform: translateY(10px);
+  transform: translateY(4px);
 }

@@ -8,6 +8,8 @@ import {
   Radar
 } from "recharts"
 
+// TODO changer le sens les étiquettes (sens contraire des aiguilles d'une montre)
+// TODO modifier le point de départ des étiquettes
 export default function Performances ( props )
 {
 
@@ -38,13 +40,33 @@ export default function Performances ( props )
       }
   ]
 
-  const kindLabels = {
+  const kind = {
       1: 'cardio',
       2: 'energy',
       3: 'endurance',
       4: 'strength',
       5: 'speed',
       6: 'intensity'
+  }
+
+  const kindLabels = {};
+
+  for (let key in kind) {
+    const translatedLabel = translateToFrench(kind[key]);
+    kindLabels[key] = translatedLabel;
+  }
+
+  function translateToFrench(label) {
+    const translations = {
+      cardio: 'Cardio',
+      energy: 'Énergie',
+      endurance: 'Endurance',
+      strength: 'Force',
+      speed: 'Vitesse',
+      intensity: 'Intensité'
+    };
+
+    return translations[label] || label;
   }
 
   const renderPolarAngleAxis = ( { payload, x, y, cx, cy, ...rest } ) =>
@@ -55,8 +77,8 @@ export default function Performances ( props )
       <text
         {...rest}
         className="performances__kindTicks"
-        y={ y + ( y - cy ) / 5 }
-        x={ x + ( x - cx ) / 4 }
+        y={ y + ( y - cy ) / 11 }
+        x={ x + ( x - cx ) / 25 }
         textAnchor="middle"
       >
         {kindLabel}
@@ -64,24 +86,34 @@ export default function Performances ( props )
     )
   }
 
+  const screenWidth = window.innerWidth
+  // console.log("screenWidth : ",screenWidth) //*
+  const polarRadius = [0, 11.25, 22.5, 45, 67.5, 90]
+  const pixelValues = polarRadius.map( radius => ( radius * screenWidth ) / 1440 )
+  // console.log("polarRadius : ",polarRadius) //*
+  // console.log("pixelValues : ",pixelValues) //*
+
   return (
     <div className="graph__performances">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={dataPerformances}>
-          <PolarGrid radialLines={false} />
+        <RadarChart data={dataPerformances} >
+          <PolarGrid
+            radialLines={ false }
+            polarRadius={ pixelValues }
+          />
           <PolarAngleAxis
             dataKey="kind"
-            tick={props => renderPolarAngleAxis(props)}
+            tick={ renderPolarAngleAxis } 
           />
           <PolarRadiusAxis
-            angle={ 30 }
-            domaine={ ['auto', 'auto' ] }
             tick={ false }
             axisLine={ false }
+            tickCount={ 6 }
+            domain={["auto", "auto"]}
           />
           <Radar
             dataKey="value"
-            fill="#FF0101"
+            fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-radar' ) }
             fillOpacity={ 0.7 }
           />
         </RadarChart>
