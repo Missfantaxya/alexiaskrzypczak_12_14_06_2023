@@ -109,7 +109,7 @@ export default function Performances ( props )
             tick={ false }
             axisLine={ false }
             tickCount={ 6 }
-            domain={["auto", "auto"]}
+            domain={[0, "dataMax + 25"]}
           />
           <Radar
             dataKey="value"
