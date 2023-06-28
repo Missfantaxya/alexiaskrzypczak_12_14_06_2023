@@ -14,6 +14,8 @@ import
 
 export default function DailyActivity ( props )
 {
+  // TODO voir pour enlever les id rajouter dans la data
+  // TODO raccourcir l'axe des absysses (ne doit pas dépasser des labels)
   const dataWeight = [
     {
       "id":1,
