@@ -38,7 +38,7 @@ export default function Performances ( props )
       }
   ]
 
-  const kind = {
+  const kindLabels = {
       1: 'cardio',
       2: 'energy',
       3: 'endurance',
@@ -47,40 +47,22 @@ export default function Performances ( props )
       6: 'intensity'
   }
 
-  // const kindLabels = dataPerformances.map((item) => ({
-  //   kind: item.kind,
-  //   label: getKindLabel(item.kind)
-  // } ) )
-  
-  // function getKindLabel(kind) {
-  //   // Faites le formatage nécessaire pour obtenir l'étiquette correspondante à la valeur de kind
-  //   switch (kind) {
-  //     case 1:
-  //       return 'cardio';
-  //     case 2:
-  //       return 'energy';
-  //     case 3:
-  //       return 'endurance';
-  //     case 4:
-  //       return 'strength';
-  //     case 5:
-  //       return 'speed';
-  //     case 6:
-  //       return 'intensity';
-  //     default:
-  //       return '';
-  //   }
-  // }
-
-  // const CustomAxisTick = ({ x, y, payload }) => {
-  //   const label = kindLabels[ payload.value ]
-  //   // TODO mettre ce que je peux dans le fichier css
-  //   return (
-  //     <text x={x} y={y} textAnchor="middle" fill="#FFF" fontSize="12">
-  //       {label}
-  //     </text>
-  //   )
-  // }
+  const renderPolarAngleAxis = ( { payload, x, y, cx, cy, ...rest } ) =>
+  {
+    const kindLabel = kindLabels[ payload.value ];
+    
+    return (
+      <text
+        {...rest}
+        className="performances__kindTicks"
+        y={ y + ( y - cy ) / 5 }
+        x={ x + ( x - cx ) / 4 }
+        textAnchor="middle"
+      >
+        {kindLabel}
+      </text>
+    )
+  }
 
   return (
     <div className="graph__performances">
@@ -88,8 +70,8 @@ export default function Performances ( props )
         <RadarChart data={dataPerformances}>
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
-            datakey="kind"
-            // tick={<CustomAxisTick/>}
+            dataKey="kind"
+            tick={props => renderPolarAngleAxis(props)}
           />
           <PolarRadiusAxis
             angle={ 30 }
