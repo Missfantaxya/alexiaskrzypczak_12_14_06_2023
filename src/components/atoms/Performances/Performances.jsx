@@ -8,8 +8,6 @@ import {
   Radar
 } from "recharts"
 
-// TODO changer le sens les étiquettes (sens contraire des aiguilles d'une montre)
-// TODO modifier le point de départ des étiquettes
 export default function Performances ( props )
 {
 
@@ -49,10 +47,21 @@ export default function Performances ( props )
       6: 'intensity'
   }
 
+  function reverseKindOrder(kind) {
+  const kindOrderChanged = {};
+  const keys = Object.keys(kind);
+  for (let i = keys.length - 1; i >= 0; i--) {
+    kindOrderChanged[keys.length - i] = kind[keys[i]];
+  }
+  return kindOrderChanged;
+  }
+  
+  const kindOrderChanged = reverseKindOrder( kind );
+
   const kindLabels = {};
 
-  for (let key in kind) {
-    const translatedLabel = translateToFrench(kind[key]);
+  for (let key in kindOrderChanged) {
+    const translatedLabel = translateToFrench(kindOrderChanged[key]);
     kindLabels[key] = translatedLabel;
   }
 
@@ -71,7 +80,7 @@ export default function Performances ( props )
 
   const renderPolarAngleAxis = ( { payload, x, y, cx, cy, ...rest } ) =>
   {
-    const kindLabel = kindLabels[ payload.value ];
+    const kindLabel = kindLabels[ payload.value ]
     
     return (
       <text
@@ -87,11 +96,8 @@ export default function Performances ( props )
   }
 
   const screenWidth = window.innerWidth
-  // console.log("screenWidth : ",screenWidth) //*
   const polarRadius = [0, 11.25, 22.5, 45, 67.5, 90]
   const pixelValues = polarRadius.map( radius => ( radius * screenWidth ) / 1440 )
-  // console.log("polarRadius : ",polarRadius) //*
-  // console.log("pixelValues : ",pixelValues) //*
 
   return (
     <div className="graph__performances">
