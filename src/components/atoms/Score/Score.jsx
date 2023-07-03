@@ -9,7 +9,8 @@ import
   
 export default function Score ( props )
 {
-  const dataScore = {
+  const dataScore = [
+    {
         id: 12,
         userInfos: {
             firstName: 'Karl',
@@ -22,32 +23,70 @@ export default function Score ( props )
             proteinCount: 155,
             carbohydrateCount: 290,
             lipidCount: 50
-        }
-  }
-  const hasTodayScore = dataScore.hasOwnProperty("todayScore")
+      }
+    }
+  ]
+
+  const hasTodayScore = dataScore[0].hasOwnProperty( "todayScore" )
   const dataBar = hasTodayScore ? "todayScore" : "score"
-// TODO le graph n'est pas proportionelle à la valeur du score donc aattention.
+  // console.log( "dataBar :", dataBar ) //*
+  
+  const progress = dataScore[ 0 ].todayScore
+  const progressInPercentage = progress * 100
+
+  const circleBackgroundKpi = getComputedStyle(document.documentElement)
+    .getPropertyValue("--circle-background-kpi")
+    .trim();
+  
+// TODO le graph n'est pas proportionelle à la valeur du score donc attention.
   return (
     <div className="graph__score">
-      <h3>
+      <h3 className="score__title">
         Score
       </h3>
       <ResponsiveContainer width="100%" height="100%" >
         <RadialBarChart
           width="100%"
           height="100%"
-          data={ [dataScore] }
-          startAngle={ 210 }
-          endAngle={ 30 }
+          data={ dataScore }
+          startAngle={ 360 }
+          endAngle={ 0 }
           innerRadius="70%"
           outerRadius="80%"
         >
           <RadialBar
             dataKey={ dataBar }
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ) }
-            // minAngle={50} //?
           />
-          <Legend />
+          <Legend
+            verticalAlign="middle"
+            align="center"
+            wrapperStyle={ {
+              backgroundColor: circleBackgroundKpi,
+              width: "11.335vw",
+              height: "11.335vw",
+              borderRadius: "50%",
+              left: "3.3VW",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            } }
+            formatter={ ( value, entry ) => (
+              <span className="barChart__legendScore">
+                { `${ progressInPercentage }%` }
+                <span className="barChart__legendText">
+                  <span >
+                    de votre
+                  </span>
+                  <span>
+                    objectif
+                  </span>
+                </span>
+              </span>
+            ) }
+            iconSize={ 0 }
+            layout="horizontal"
+          />
         </RadialBarChart>
       </ResponsiveContainer>
     </div>

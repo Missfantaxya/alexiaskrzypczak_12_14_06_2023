@@ -1,6 +1,32 @@
 .graph__score{
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   background-color: var(--background-color-kpi);
+}
+
+.score__title{
+  position: absolute;
+  top: 2.34vh;
+  left: 2.08vw;
+  font-size: 1.46vh;
+}
+
+.barChart__legendScore{
+  display: flex;
+  flex-direction: column;
+  font-size: 2.53vh;
+  line-height: 2.53vh;
+  font-weight: 700;
+  color:var(--data-color-kpi)
+}
+
+.barChart__legendText{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.56vh;
+  line-height: 1.56vh;
+  font-weight: 500;
+  color: var(--text-color-kpi);
 }
