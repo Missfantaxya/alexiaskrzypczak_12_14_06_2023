@@ -34,6 +34,9 @@ export default function Score ( props )
   const progress = dataScore[ 0 ].todayScore
   const progressInPercentage = progress * 100
 
+  const progressBar = 180 - (progress * 180)
+  console.log( "progressBar :", progressBar ) 
+
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
     .trim();
@@ -49,14 +52,15 @@ export default function Score ( props )
           width="100%"
           height="100%"
           data={ dataScore }
-          startAngle={ 360 }
-          endAngle={ 0 }
+          startAngle={ progressBar }
+          endAngle={ 180 }
           innerRadius="70%"
           outerRadius="80%"
         >
           <RadialBar
-            dataKey={ dataBar }
+            dataKey= {dataBar} 
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ) }
+            radius={ [ 3, 3, 0, 0 ] } //!
           />
           <Legend
             verticalAlign="middle"
