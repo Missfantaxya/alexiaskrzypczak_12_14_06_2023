@@ -98,6 +98,9 @@ export default function Performances ( props )
   const screenWidth = window.innerWidth
   const polarRadius = [0, 11.25, 22.5, 45, 67.5, 90]
   const pixelValues = polarRadius.map( radius => ( radius * screenWidth ) / 1440 )
+  console.log( "pixelValues : ", pixelValues )
+  
+  //TODO adapter le layout à 1024px
 
   return (
     <div className="graph__performances">
