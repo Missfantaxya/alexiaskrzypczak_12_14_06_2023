@@ -35,7 +35,7 @@ export default function Score ( props )
   const progressInPercentage = progress * 100
 
   const progressBar = 180 - (progress * 180)
-  console.log( "progressBar :", progressBar ) 
+  // console.log( "progressBar :", progressBar ) //*
 
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
@@ -58,9 +58,9 @@ export default function Score ( props )
           outerRadius="80%"
         >
           <RadialBar
-            dataKey= {dataBar} 
+            dataKey={ dataBar }
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ) }
-            radius={ [ 3, 3, 0, 0 ] } //!
+            cornerRadius={10}
           />
           <Legend
             verticalAlign="middle"
