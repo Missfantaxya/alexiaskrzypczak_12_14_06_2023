@@ -39,9 +39,7 @@ export default function Score ( props )
 
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
-    .trim();
-  
-// TODO le graph n'est pas proportionelle à la valeur du score donc attention.
+
   return (
     <div className="graph__score">
       <h3 className="score__title">
