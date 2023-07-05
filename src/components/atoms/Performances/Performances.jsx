@@ -11,6 +11,9 @@ import {
 export default function Performances ( props )
 {
 
+  // TODO reconstruire le [] de data (dans le formatage ) pour avoir le bon sens des étiquettes.
+  // TODO retirer les data des composants.
+
   const dataPerformances = [
       {
           "value": 80,
@@ -46,6 +49,8 @@ export default function Performances ( props )
       5: 'speed',
       6: 'intensity'
   }
+  // TODO construir un nouvel objet à partir de kind
+  // TODO avec une propriété order = le  number de kind (voir code d'Yves)
 
   function reverseKindOrder(kind) {
   const kindOrderChanged = {};
@@ -64,6 +69,7 @@ export default function Performances ( props )
     const translatedLabel = translateToFrench(kindOrderChanged[key]);
     kindLabels[key] = translatedLabel;
   }
+
 
   function translateToFrench(label) {
     const translations = {
@@ -100,7 +106,7 @@ export default function Performances ( props )
   const pixelValues = polarRadius.map( radius => ( radius * screenWidth ) / 1440 )
   // console.log( "pixelValues : ", pixelValues ) //*
   
-  //TODO adapter le layout à 1024px
+  //TODO adapter le layout à 1024px de large
 
   return (
     <div className="graph__performances">
@@ -118,7 +124,7 @@ export default function Performances ( props )
             tick={ false }
             axisLine={ false }
             tickCount={ 6 }
-            domain={[0, "dataMax + 25"]}
+            domain={[0, "dataMax"]}
           />
           <Radar
             dataKey="value"

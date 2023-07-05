@@ -40,6 +40,8 @@ export default function Score ( props )
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
 
+  //TODO voir pour la rond blanc centrale qui cache le trait rouge sur grand format
+  
   return (
     <div className="graph__score">
       <h3 className="score__title">
