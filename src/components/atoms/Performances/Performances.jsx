@@ -8,66 +8,30 @@ import {
   Radar
 } from "recharts"
 
-export default function Performances ( props )
+export default function Performances ( {
+  performances,
+  kind
+} )
 {
 
-  // TODO reconstruire le [] de data (dans le formatage ) pour avoir le bon sens des étiquettes.
-  // TODO retirer les data des composants.
-
-  const dataPerformances = [
-      {
-          "value": 80,
-          "kind": 1
-      },
-      {
-          "value": 120,
-          "kind": 2
-      },
-      {
-          "value": 140,
-          "kind": 3
-      },
-      {
-          "value": 50,
-          "kind": 4
-      },
-      {
-          "value": 200,
-          "kind": 5
-      },
-      {
-          "value": 90,
-          "kind": 6
-      }
-  ]
-
-  const kind = {
-      1: 'cardio',
-      2: 'energy',
-      3: 'endurance',
-      4: 'strength',
-      5: 'speed',
-      6: 'intensity'
-  }
-  // TODO construir un nouvel objet à partir de kind
-  // TODO avec une propriété order = le  number de kind (voir code d'Yves)
+  // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes.
 
   function reverseKindOrder(kind) {
-  const kindOrderChanged = {};
-  const keys = Object.keys(kind);
-  for (let i = keys.length - 1; i >= 0; i--) {
-    kindOrderChanged[keys.length - i] = kind[keys[i]];
-  }
-  return kindOrderChanged;
+    const kindOrderChanged = {}
+    const keys = Object.keys(kind)
+    for (let i = keys.length - 1; i >= 0; i--) {
+      kindOrderChanged[ keys.length - i ] = kind[ keys[ i ] ]
+    }
+    return kindOrderChanged
   }
   
-  const kindOrderChanged = reverseKindOrder( kind );
+  const kindOrderChanged = reverseKindOrder( kind )
 
-  const kindLabels = {};
+  const kindLabels = {}
 
   for (let key in kindOrderChanged) {
-    const translatedLabel = translateToFrench(kindOrderChanged[key]);
-    kindLabels[key] = translatedLabel;
+    const translatedLabel = translateToFrench(kindOrderChanged[key])
+    kindLabels[key] = translatedLabel
   }
 
 
@@ -104,14 +68,11 @@ export default function Performances ( props )
   const screenWidth = window.innerWidth
   const polarRadius = [0, 11.25, 22.5, 45, 67.5, 90]
   const pixelValues = polarRadius.map( radius => ( radius * screenWidth ) / 1440 )
-  // console.log( "pixelValues : ", pixelValues ) //*
-  
-  //TODO adapter le layout à 1024px de large
 
   return (
     <div className="graph__performances">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={dataPerformances} >
+        <RadarChart data={performances} >
           <PolarGrid
             radialLines={ false }
             polarRadius={ pixelValues }

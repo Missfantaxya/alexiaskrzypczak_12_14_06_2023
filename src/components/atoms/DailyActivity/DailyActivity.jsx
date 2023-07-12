@@ -12,55 +12,8 @@ import
     Bar
   } from "recharts"
 
-export default function DailyActivity ( props )
-{
-  // TODO voir pour enlever les id rajouter dans la data
-  // TODO raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
-  const dataWeight = [
-    {
-      "id":1,
-      "day": '2020-07-01',
-      "kilogram": 80,
-      "calories": 240
-    },
-    {
-      "id":2,
-      "day": '2020-07-02',
-      "kilogram": 80,
-      "calories": 220
-    },
-    {
-      "id":3,
-      "day": '2020-07-03',
-      "kilogram": 81,
-      "calories": 280
-    },
-    {
-      "id":4,
-      "day": '2020-07-04',
-      "kilogram": 81,
-      "calories": 290
-    },
-    {
-      "id":5,
-      "day": '2020-07-05',
-      "kilogram": 80,
-      "calories": 160
-    },
-    {
-      "id":6,
-      "day": '2020-07-06',
-      "kilogram": 78,
-      "calories": 162
-    },
-    {
-      "id":7,
-      "day": '2020-07-07',
-      "kilogram": 76,
-      "calories": 390
-    }
-  ]
-  
+export default function DailyActivity ( {activity} )
+{ 
   const dayLabels = {
     '2020-07-01': '1',
     '2020-07-02': '2',
@@ -71,6 +24,9 @@ export default function DailyActivity ( props )
     '2020-07-07': '7'
   }
 
+  // FIXME RECHARTS raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
+  // FIXME RECHARTS il n'y a que 3 label au lieu de 7 sur les abcisses.
+  
   const CustomAxisTick = ({ x, y, payload }) => {
     const label = dayLabels[ payload.value ];
     
@@ -126,7 +82,7 @@ export default function DailyActivity ( props )
       </h3>
       <ResponsiveContainer>
         <BarChart
-          data= { dataWeight }
+          data= { activity }
           barCategoryGap={ 8 }
           margin={{ top: 95, right: 29, bottom: 23, left: 43 }}
         >
@@ -135,7 +91,7 @@ export default function DailyActivity ( props )
             dataKey="day"
             tickCount={ 7 }
             tickLine={ false }
-            // domain={['dataMin', 'dataMax']}
+            // domain={['dataMin', 'dataMax']} //TODO ?
             tick={<CustomAxisTick />}
             axisLine={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
           />

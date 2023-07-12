@@ -15,6 +15,11 @@ export default function ProfileTemplate(props) {
           proteins={ props.proteins }
           carbs={ props.carbs }
           fats={ props.fats }
+          activity={ props.activity }
+          score={ props.score }
+          performances={ props.performances }
+          kind={ props.kind }
+          sessions={ props.sessions }
         />
       </main>
     </div>

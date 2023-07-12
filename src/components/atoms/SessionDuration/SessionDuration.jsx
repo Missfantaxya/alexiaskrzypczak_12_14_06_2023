@@ -7,40 +7,10 @@ import {
   Tooltip
 } from "recharts"
 
-//TODO ajouter un écart au labels des absisses avec les bords du graph
-//TODO faire aller la courbe jusqu'aux bords du graph
+//FIXME ajouter un écart au labels des absisses avec les bords du graph
+//FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  const dataSessions= [
-    {
-      "day": 1,
-      "sessionLength": 30
-    },
-    {
-      "day": 2,
-      "sessionLength": 23
-    },
-    {
-      "day": 3,
-      "sessionLength": 45
-    },
-    {
-      "day": 4,
-      "sessionLength": 50
-    },
-    {
-      "day": 5,
-      "sessionLength": 0
-    },
-    {
-      "day": 6,
-      "sessionLength": 0
-    },
-    {
-      "day": 7,
-      "sessionLength": 60
-    }
-  ]
 
   const dayLabels = {
     1: 'L',
@@ -90,7 +60,7 @@ export default function SessionDuration ( props )
     </svg>
   )
 }
-// TODO ajouter la partie droite après l'activeDot en foncé
+// FIXME ajouter la partie droite après l'activeDot en foncé
   return (
     <div className="graph__lenght">
       <h3 className="lenght__title">
@@ -101,7 +71,7 @@ export default function SessionDuration ( props )
         height="70%"
       >
         <LineChart
-          data={ dataSessions }
+          data={ props.sessions }
           width="100%"
           height="100%"
         >

@@ -18,17 +18,20 @@ export default function Dashboard ( props )
       <div className="dashboard__results">
         <div className="dashboard__graphics">
           <GraphicBar>
-            <DailyActivity />
+            <DailyActivity activity={props.activity} />
           </GraphicBar>
           <GraphicsSquares>
             <GraphicSquare>
-              <SessionDuration />
+              <SessionDuration sessions={ props.sessions } />
             </GraphicSquare>
             <GraphicSquare>
-              <Performances />
+              <Performances
+                performances={ props.performances }
+                kind={ props.kind }
+              />
             </GraphicSquare>
             <GraphicSquare>
-              <Score />
+              <Score score={props.score} />
             </GraphicSquare>
           </GraphicsSquares>
         </div>
