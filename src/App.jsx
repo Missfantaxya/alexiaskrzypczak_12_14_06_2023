@@ -1,15 +1,25 @@
-import { useState } from 'react'
-
-import Logo from './components/atoms/Logo/Logo'
+import formatData from "./utils/apiDataFormatter"
 import ProfilPage from './components/pages/ProfilPage/ProfilPage'
 
 import './App.css'
 
-function App() {
+function App ()
+{
+  const formattedData = formatData()
+  console.log( "formattedData: ", formattedData ) //* 
+
 
   return (
     <div className='App'>
-      <ProfilPage />
+      <ProfilPage
+        firstname={ formattedData.firstname }
+        calories={ formattedData.calories }
+        proteins={ formattedData.proteins }
+        carbs={ formattedData.carbs }
+        fats={ formattedData.fats }
+        activities={formattedData. activities }
+        user={formattedData.user}
+      />
     </div>
   )
 }

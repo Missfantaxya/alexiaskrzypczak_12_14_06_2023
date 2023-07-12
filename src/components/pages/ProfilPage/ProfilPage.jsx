@@ -1,15 +1,17 @@
 import "./ProfilPage.css"
 import ProfilTemplate from "../../templates/ProfilTemplate/ProfilTemplate"
 
-export default function ProfilPage ( props )
+export default function ProfilPage (
+  {
+    firstname,
+    calories,
+    proteins,
+    carbs,
+    fats,
+    activities,
+    score
+} )
 {
-  // Data pour les étiquettes de nutrition------------
-  const firstname = "Thomas"
-  const calories = "850"
-  const proteins = "40"
-  const carbs = "60"
-  const fats = "50"
-
   // Data pour le graph Performance ----------------------
    // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes.
   // TODO retirer la data des composants. 
@@ -70,45 +72,6 @@ export default function ProfilPage ( props )
     }
   ]
 
-  // Data pour le graphDailyActivity --------------
-  const dataActivity = [
-    {
-      "day": '2020-07-01',
-      "kilogram": 80,
-      "calories": 240
-    },
-    {
-      "day": '2020-07-02',
-      "kilogram": 80,
-      "calories": 220
-    },
-    {
-      "day": '2020-07-03',
-      "kilogram": 81,
-      "calories": 280
-    },
-    {
-      "day": '2020-07-04',
-      "kilogram": 81,
-      "calories": 290
-    },
-    {
-      "day": '2020-07-05',
-      "kilogram": 80,
-      "calories": 160
-    },
-    {
-      "day": '2020-07-06',
-      "kilogram": 78,
-      "calories": 162
-    },
-    {
-      "day": '2020-07-07',
-      "kilogram": 76,
-      "calories": 390
-    }
-  ]
-
   // Data du graphe SessionDuration ---------------------------
   const dataSessions= [
     {
@@ -144,13 +107,14 @@ export default function ProfilPage ( props )
   return (
     <>
       <ProfilTemplate
+        // users = {users}
         firstname = { firstname}
         calories = { calories }
         proteins = { proteins }
         carbs = { carbs }
         fats={ fats }
-        activity={ dataActivity }
-        score={ dataScore }
+        activity={ activities }
+        score={ score }
         performances={ dataPerformances }
         kind={ kind }
         sessions={ dataSessions }

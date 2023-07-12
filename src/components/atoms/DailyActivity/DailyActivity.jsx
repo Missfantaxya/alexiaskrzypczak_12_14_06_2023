@@ -14,6 +14,9 @@ import
 
 export default function DailyActivity ( {activity} )
 { 
+  const labels = activity.map( ( element, index ) => ( { [ element.day ]: index + 1 } ) );
+  // console.log( "labels : ", labels ) 
+  
   const dayLabels = {
     '2020-07-01': '1',
     '2020-07-02': '2',
