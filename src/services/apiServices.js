@@ -30,29 +30,33 @@ const BASEURL = "http://localhost:3000/user"
 
 async function getActivityData ( userId )
 {
-  await axios.get( `${ BASEURL }/${ userId }/activity` )
-  .then(function (response) {
+  try {
+    const response = await axios.get(`${BASEURL}/${userId}/activity`)
     // en cas de réussite de la requête
     const activitiesValues = response.data.data.sessions
-    console.log( "activitiesValues : ", activitiesValues ) //*
-    return activitiesValues
-  })
-  .catch(function (error) {
-    // en cas d’échec de la requête
-    console.log("error : ",error)
-  })
-  .finally(function () {
-    // dans tous les cas 
-    console.log( "PROMESSE ENVOYEE" );
-  });
+    // console.log( "activitiesValues : ", activitiesValues ) //*
+    // Cette valeur sera résolue dans la promesse renvoyée par la fonction
+    return activitiesValues 
+  } catch (error) {
+    // en cas d'échec de la requête
+    console.log("error : ", error)
+    throw error
+  } finally {
+    // dans tous les cas
+    // console.log("Demande ACTIVITY ENVOYEE") //*
+  }
 }
 
-export default async function fetchData() {
+export default async function fetchData ( userId, onMock )
+{
+  userId = 12
   const users = USER_MAIN_DATA
-  // console.log( "users : ", users ) //* 
-  const activities = await getActivityData( 12 )
-  console.log( "activities de service : ", activities ) //!
-  // console.log( "activitiesValues : ", activitiesValues ) //!
+  // console.log( "users : ", users ) //*
+  // TODO reformuler pour avoir MockData si pas API voir exemple d'Yves : 
+  // const activities = onMock ? USER_ACTIVITY : await getActivityData( userId )
+  
+  const activities = await getActivityData( userId )
+  console.log( "activities de service : ", activities ) //*
   // const activities = USER_ACTIVITY
   // console.log( "activities : ", activities ) //* 
   const sessions = USER_AVERAGE_SESSIONS

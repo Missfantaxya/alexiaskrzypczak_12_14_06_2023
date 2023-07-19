@@ -4,7 +4,7 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  console.log( "data : ", data )
+  console.log( "data du formatter : ", data ) //*
   const users = data.users
   // console.log( "users : ", users ) //*
   const user = users[0]
@@ -23,7 +23,7 @@ export default async function formatData()
   const activities = data.activities
   // const activity = activities[0] // pour le mock uniquement
   const activity = activities
-  console.log("activities du formatter : ",activities)
+  console.log("activity du formatter : ",activity)
   // const dayActivities = activity.sessions  // mock
 
   //sessions graph
@@ -48,7 +48,6 @@ export default async function formatData()
     proteins,
     carbs,
     fats,
-    // dayActivities,
     activity,
     sessions,
     performances,

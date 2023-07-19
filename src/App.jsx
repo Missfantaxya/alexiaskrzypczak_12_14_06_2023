@@ -3,12 +3,12 @@ import ProfilPage from './components/pages/ProfilPage/ProfilPage'
 
 import './App.css'
 
-function App ()
+const formattedData = await formatData()
+console.log( "formattedData 1 : ", formattedData ) //*
+
+export default function App ()
 {
-  const formattedData = formatData()
-  console.log( "formattedData: ", formattedData ) //* 
-
-
+  console.log( "formattedData 2 : ", formattedData )//*
   return (
     <div className='App'>
       <ProfilPage
@@ -17,7 +17,6 @@ function App ()
         proteins={ formattedData.proteins }
         carbs={ formattedData.carbs }
         fats={ formattedData.fats }
-        // activities={formattedData. dayActivities }
         activities={formattedData. activity }
         user={ formattedData.user }
         score={formattedData.score}
@@ -25,5 +24,3 @@ function App ()
     </div>
   )
 }
-
-export default App
