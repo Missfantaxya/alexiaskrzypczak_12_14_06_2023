@@ -33,9 +33,9 @@ export default function formatData()
   // score graph
   const hasTodayScore = user.hasOwnProperty( "todayScore" )
   const userScore = hasTodayScore ? user.todayScore : user.score
-  // FIXME score = number|undefined
-  const score = userScore //~
-  console.log("score de apiDataFormatter : ",score) //*
+  
+  const score = userScore
+  // console.log("score de apiDataFormatter : ",score) //*
 
   return ( {
     users,

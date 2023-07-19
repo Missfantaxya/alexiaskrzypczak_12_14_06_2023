@@ -1,5 +1,5 @@
 // Fichier des appels API
-// import axios from "axios"
+import axios from "axios"
 
 // // URL du fichier data.js (remplacez le chemin d'accès approprié)
 // const dataUrl = 'src/data/mockData.js';
@@ -26,10 +26,13 @@ import
   USER_PERFORMANCE
 } from "../data/mockData"
 
+const BASEURL = "http://localhost:3000/user"
+
 export default function fetchData() {
   const users = USER_MAIN_DATA
   // console.log( "users : ", users ) //* 
-  const activities = USER_ACTIVITY
+  const activities = getActivityData(12)
+  // const activities = USER_ACTIVITY
   // console.log( "activities : ", activities ) //* 
   const sessions = USER_AVERAGE_SESSIONS
   // console.log( "sessions : ", sessions ) //* 
@@ -39,7 +42,15 @@ export default function fetchData() {
   return(
     {users,
     activities,
-    sessions,
-    performances}
+      sessions,
+      performances
+    }
   )
   }
+
+async function getActivityData ( idUser )
+{
+  const apiResponse = await axios.get( `${ BASEURL }/${ userId }/activity` )
+  const values = await apiResponse.json()
+  return values
+}
