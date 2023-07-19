@@ -32,9 +32,9 @@ export default function formatData()
 
   // score graph
   const hasTodayScore = user.hasOwnProperty( "todayScore" )
-  const userScore = hasTodayScore ? "todayScore" : "score"
+  const userScore = hasTodayScore ? user.todayScore : user.score
   // FIXME score = number|undefined
-  const score = user.userScore //~
+  const score = userScore //~
   console.log("score de apiDataFormatter : ",score) //*
 
   return ( {
