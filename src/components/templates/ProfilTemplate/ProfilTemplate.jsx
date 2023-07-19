@@ -3,7 +3,9 @@ import Header from "../../organisms/Header/Header"
 import NavVertical from "../../organisms/NavVertical/NavVertical"
 import Dashboard from "../../organisms/Dashboard/Dashboard"
 
-export default function ProfileTemplate(props) {
+export default function ProfileTemplate ( props )
+{
+  console.log("props de ProfilTemplate: ",props)//~
   return (
     <div className="profilTemplate">
       <Header />

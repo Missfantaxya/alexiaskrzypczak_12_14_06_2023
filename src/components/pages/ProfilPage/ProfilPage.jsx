@@ -10,8 +10,18 @@ export default function ProfilPage (
     fats,
     activities,
     score
-} )
+  }
+)
 {
+  // console.log( "firstname : ", firstname ) //*
+  // console.log( "calories : ", calories ) //*
+  // console.log( "proteins : ", proteins ) //*
+  // console.log( "carbs : ", carbs ) //*
+  // console.log( "fats : ", fats ) //*
+  // console.log( "activities : ", activities ) //*
+  console.log("score : ",score) //!
+  
+  
   // Data pour le graph Performance ----------------------
    // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes.
   // TODO retirer la data des composants. 
@@ -52,25 +62,6 @@ export default function ProfilPage (
   }
   // TODO construire un nouvel objet à partir de kind
   // TODO avec une propriété order = le  number de kind (voir code d'Yves)
-
-  // Data pour le graph Score ----------------------------
-  const dataScore = [
-    {
-        id: 12,
-        userInfos: {
-            firstName: 'Karl',
-            lastName: 'Dovineau',
-            age: 31,
-        },
-        todayScore: 0.12,
-        keyData: {
-            calorieCount: 1930,
-            proteinCount: 155,
-            carbohydrateCount: 290,
-            lipidCount: 50
-      }
-    }
-  ]
 
   // Data du graphe SessionDuration ---------------------------
   const dataSessions= [

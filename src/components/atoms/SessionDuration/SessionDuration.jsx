@@ -11,6 +11,7 @@ import {
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
+  // console.log("props de SessionDuration :", props) //*
 
   const dayLabels = {
     1: 'L',

@@ -30,6 +30,13 @@ export default function formatData()
   const performances = data.performances
   // console.log( "performances : ", performances ) //*
 
+  // score graph
+  const hasTodayScore = user.hasOwnProperty( "todayScore" )
+  const userScore = hasTodayScore ? "todayScore" : "score"
+  // FIXME score = number|undefined
+  const score = user.userScore //~
+  console.log("score de apiDataFormatter : ",score) //*
+
   return ( {
     users,
     user,
@@ -41,21 +48,8 @@ export default function formatData()
     dayActivities,
     sessions,
     performances,
+    score
   } )
 
 }
-
-// async function formatData() {
-//   const data = await fetchData()
-//   if (data) {
-//     // Effectuez le formatage des données selon vos besoins
-
-//     // Retournez les données formatées si nécessaire
-
-//   }
-//   // Gérez le cas où les données n'ont pas pu être récupérées
-//   return null
-// }
-
-// export default formatData;
 
