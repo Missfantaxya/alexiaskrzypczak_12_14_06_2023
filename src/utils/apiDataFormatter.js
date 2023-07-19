@@ -1,11 +1,12 @@
 // Fichier de formatage de données API
 import fetchData from '../services/apiServices'
 
-export default function formatData()
+export default async function formatData()
 {
-  const data = fetchData()
+  const data = await fetchData()
+  console.log( "data : ", data )
   const users = data.users
-  console.log( "users : ", users )
+  // console.log( "users : ", users ) //*
   const user = users[0]
   // construction avec l'utilisateur 12 (id 0 dans les tableaux)
 
@@ -20,8 +21,10 @@ export default function formatData()
 
   // activity graph
   const activities = data.activities
-  const activity = activities[0]
-  const dayActivities = activity.sessions 
+  // const activity = activities[0] // pour le mock uniquement
+  const activity = activities
+  console.log("activities du formatter : ",activities)
+  // const dayActivities = activity.sessions  // mock
 
   //sessions graph
   const sessions = data.sessions
@@ -45,7 +48,8 @@ export default function formatData()
     proteins,
     carbs,
     fats,
-    dayActivities,
+    // dayActivities,
+    activity,
     sessions,
     performances,
     score

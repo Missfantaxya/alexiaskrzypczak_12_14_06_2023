@@ -28,10 +28,31 @@ import
 
 const BASEURL = "http://localhost:3000/user"
 
-export default function fetchData() {
+async function getActivityData ( userId )
+{
+  await axios.get( `${ BASEURL }/${ userId }/activity` )
+  .then(function (response) {
+    // en cas de réussite de la requête
+    const activitiesValues = response.data.data.sessions
+    console.log( "activitiesValues : ", activitiesValues ) //*
+    return activitiesValues
+  })
+  .catch(function (error) {
+    // en cas d’échec de la requête
+    console.log("error : ",error)
+  })
+  .finally(function () {
+    // dans tous les cas 
+    console.log( "PROMESSE ENVOYEE" );
+  });
+}
+
+export default async function fetchData() {
   const users = USER_MAIN_DATA
   // console.log( "users : ", users ) //* 
-  const activities = getActivityData(12)
+  const activities = await getActivityData( 12 )
+  console.log( "activities de service : ", activities ) //!
+  // console.log( "activitiesValues : ", activitiesValues ) //!
   // const activities = USER_ACTIVITY
   // console.log( "activities : ", activities ) //* 
   const sessions = USER_AVERAGE_SESSIONS
@@ -48,9 +69,4 @@ export default function fetchData() {
   )
   }
 
-async function getActivityData ( idUser )
-{
-  const apiResponse = await axios.get( `${ BASEURL }/${ userId }/activity` )
-  const values = await apiResponse.json()
-  return values
-}
+

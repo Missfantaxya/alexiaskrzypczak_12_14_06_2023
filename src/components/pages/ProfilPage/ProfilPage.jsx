@@ -19,7 +19,7 @@ export default function ProfilPage (
   // console.log( "carbs : ", carbs ) //*
   // console.log( "fats : ", fats ) //*
   // console.log( "activities : ", activities ) //*
-  console.log("score de ProfilPage: ",score) //*
+  // console.log("score de ProfilPage: ",score) //*
   
   
   // Data pour le graph Performance ----------------------

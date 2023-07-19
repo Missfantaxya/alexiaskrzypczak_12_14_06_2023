@@ -17,7 +17,8 @@ function App ()
         proteins={ formattedData.proteins }
         carbs={ formattedData.carbs }
         fats={ formattedData.fats }
-        activities={formattedData. dayActivities }
+        // activities={formattedData. dayActivities }
+        activities={formattedData. activity }
         user={ formattedData.user }
         score={formattedData.score}
       />

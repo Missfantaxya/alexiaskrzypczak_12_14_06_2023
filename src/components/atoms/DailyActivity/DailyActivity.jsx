@@ -15,7 +15,7 @@ import
 export default function DailyActivity ( {activity} )
 { 
   // console.log("activity : ",activity) //*
-  const labels = activity.map( ( element, index ) => ( { [ element.day ]: index + 1 } ) );
+  // const labels = activity.map( ( element, index ) => ( { [ element.day ]: index + 1 } ) )
   // console.log( "labels : ", labels ) //~
   //TODO convertir [labels] en {labels}
   
