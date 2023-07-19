@@ -5,7 +5,7 @@ import Dashboard from "../../organisms/Dashboard/Dashboard"
 
 export default function ProfileTemplate ( props )
 {
-  // console.log("props de ProfilTemplate: ",props)//~
+  // console.log("props de ProfilTemplate: ",props)//*
   return (
     <div className="profilTemplate">
       <Header />
