@@ -20,7 +20,6 @@ export default async function formatData()
   // activity graph-----------------
   const activities = data.activities
   const activity = activities
-  // const dayActivities = activity.sessions  // mock
 
   //sessions graph------------------------
   const sessions = data.sessions
@@ -28,6 +27,7 @@ export default async function formatData()
   // performances Graph--------------------
   const performances = data.performances.performanceValues
   const kind = data.performances.kindValues
+   // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes deu graphe de performance.
 
   // score graph---------------------------
   const score = user.scoreValues
