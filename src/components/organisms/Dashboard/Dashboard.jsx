@@ -11,7 +11,6 @@ import Score from "../../atoms/Score/Score"
 
 export default function Dashboard ( props )
 {
-  // console.log( "props de Dashboard: ", props )//~
   return (
     <div className="dashboard">
       <DashboardHeader firstname={ props.firstname } />

@@ -4,11 +4,10 @@ import ProfilPage from './components/pages/ProfilPage/ProfilPage'
 import './App.css'
 
 const formattedData = await formatData()
-console.log( "formattedData 1 : ", formattedData ) //*
 
 export default function App ()
 {
-  console.log( "formattedData 2 : ", formattedData )//*
+  console.log( "formattedData : ", formattedData )//*
   return (
     <div className='App'>
       <ProfilPage
@@ -17,7 +16,10 @@ export default function App ()
         proteins={ formattedData.proteins }
         carbs={ formattedData.carbs }
         fats={ formattedData.fats }
-        activities={formattedData. activity }
+        activities={ formattedData.activity }
+        sessions={ formattedData.sessions }
+        performances={ formattedData.performances }
+        kind={formattedData.kind}
         user={ formattedData.user }
         score={formattedData.score}
       />

@@ -14,7 +14,7 @@ import
 
 export default function DailyActivity ( {activity} )
 { 
-  // console.log("activity : ",activity) //*
+// ----------- à gérer dans le formatter----------------------------
   // const labels = activity.map( ( element, index ) => ( { [ element.day ]: index + 1 } ) )
   // console.log( "labels : ", labels ) //~
   //TODO convertir [labels] en {labels}
@@ -28,6 +28,7 @@ export default function DailyActivity ( {activity} )
     '2020-07-06': '6',
     '2020-07-07': '7'
   }
+  //---------------------------------------
 
   // FIXME RECHARTS raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
   // FIXME RECHARTS il n'y a que 3 label au lieu de 7 sur les abcisses.
