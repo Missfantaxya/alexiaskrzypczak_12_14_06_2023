@@ -4,21 +4,18 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  console.log( "data du formatter : ", data ) //*
   const user = data.users
-  console.log( "users de formatter : ", user ) //*
   
 
   // identity--------------------------------
-  const firstname = "coucou"
-  console.log( "firstname de formatter : ", firstname )
+  const firstname = user.firstname
 
   // nutirtion cards------------------------
-  console.log("counterValues du formatter : ", counterValues)
-  const calories = user.keyData.calorieCount
-  const proteins = user.keyData.proteinCount
-   const carbs =user.keyData.carbohydrateCount
-  const fats = user.keyData.lipidCount
+  const count = user.counterValues
+  const calories = count.calorieCount
+  const proteins = count.proteinCount
+   const carbs =count.carbohydrateCount
+  const fats = count.lipidCount
 
   // activity graph-----------------
   const activities = data.activities
@@ -33,10 +30,7 @@ export default async function formatData()
   const kind = data.performances.kindValues
 
   // score graph---------------------------
-  const hasTodayScore = user.hasOwnProperty( "todayScore" )
-  const userScore = hasTodayScore ? user.todayScore : user.score
-  
-  const score = userScore
+  const score = user.scoreValues
 
 
   return ( {
