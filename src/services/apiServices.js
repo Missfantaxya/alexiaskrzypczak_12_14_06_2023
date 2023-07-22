@@ -17,16 +17,10 @@ async function getUserData( userId )
     const response = await axios.get(`${BASEURL}/${userId}`)
     // en cas de réussite de la requête
     const userValues = response.data.data.userInfos
-    // console.log( "userValues : ", userValues ) //*
     const firstname = userValues.firstName
-    console.log("firstname : ",firstname)
     const counterValues = response.data.data.keyData
-    // console.log( "counterValues : ", counterValues ) //*
     const hasTodayScore = response.data.data.hasOwnProperty( "todayScore" )
-    // console.log("hasTodayScore : ",hasTodayScore) //*
     const scoreValues = hasTodayScore ? response.data.data.todayScore : response.data.data.score
-    console.log( "scoreValues : ", scoreValues ) //!
-    
 
     return ( {
       firstname,
@@ -50,23 +44,7 @@ async function getActivityData( userId )
     const response = await axios.get(`${BASEURL}/${userId}/activity`)
     // en cas de réussite de la requête
     const activitiesValues = response.data.data.sessions
-    // console.log( "activitiesValues : ", activitiesValues ) //*
-    // FIXME gérer les labels :
-    // const labels = activity.map( ( element, index ) => ( { [ element.day ]:
-    // index + 1 } ) ) 
-    // console.log( "labels : ", labels ) //~ 
-    //TODO convertir [labels] en {labels}
-  
-    const dayLabels = {
-      '2020-07-01': '1',
-      '2020-07-02': '2',
-      '2020-07-03': '3',
-      '2020-07-04': '4',
-      '2020-07-05': '5',
-      '2020-07-06': '6',
-      '2020-07-07': '7'
-    }
-  
+    console.log("activitiesValues : ",activitiesValues) //*
     return activitiesValues 
   } catch (error) {
     // en cas d'échec de la requête
@@ -120,29 +98,24 @@ async function getPerformanceData( userId )
   }
 }
 
+    // TODO reformuler pour avoir MockData si pas API voir exemple d'Yves
 export default async function fetchData ( userId, onMock )
 {
   userId = 12
   const users = await getUserData( userId )
   // const users = USER_MAIN_DATA
-  // console.log( "users : ", users ) //*
-  // TODO reformuler pour avoir MockData si pas API voir exemple d'Yves : 
-  // const activities = onMock ? USER_ACTIVITY : await getActivityData( userId )
+
   
   const activities = await getActivityData( userId )
-  // console.log( "activities de service : ", activities ) //*
   // const activities = USER_ACTIVITY
-  // console.log( "activities : ", activities ) //* 
+
+  // const activities = onMock ? USER_ACTIVITY : await getActivityData( userId )
 
   const sessions = await getSessionsData( userId )
-  // console.log( "sessions de service : ", sessions ) //*
   // const sessions = USER_AVERAGE_SESSIONS
-  // console.log( "sessions : ", sessions ) //* 
 
   const performances = await getPerformanceData( userId )
-    // console.log( "performances de service : ", performances ) //*
   // const performances = USER_PERFORMANCE
-  // console.log( "performances : ", performances ) //*
 
   return ( {
     users,

@@ -7,7 +7,7 @@ const formattedData = await formatData()
 
 export default function App ()
 {
-  console.log( "formattedData : ", formattedData )//*
+  // console.log( "formattedData : ", formattedData )//*
   return (
     <div className='App'>
       <ProfilPage
