@@ -10,47 +10,12 @@ import {
 
 export default function Performances ( {
   performances,
-  kind
+  labels
 } )
 {
-
-  // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes.
-
-  function reverseKindOrder(kind) {
-    const kindOrderChanged = {}
-    const keys = Object.keys(kind)
-    for (let i = keys.length - 1; i >= 0; i--) {
-      kindOrderChanged[ keys.length - i ] = kind[ keys[ i ] ]
-    }
-    return kindOrderChanged
-  }
-  
-  const kindOrderChanged = reverseKindOrder( kind )
-
-  const kindLabels = {}
-
-  for (let key in kindOrderChanged) {
-    const translatedLabel = translateToFrench(kindOrderChanged[key])
-    kindLabels[key] = translatedLabel
-  }
-
-
-  function translateToFrench(label) {
-    const translations = {
-      cardio: 'Cardio',
-      energy: 'Énergie',
-      endurance: 'Endurance',
-      strength: 'Force',
-      speed: 'Vitesse',
-      intensity: 'Intensité'
-    };
-
-    return translations[label] || label;
-  }
-
   const renderPolarAngleAxis = ( { payload, x, y, cx, cy, ...rest } ) =>
   {
-    const kindLabel = kindLabels[ payload.value ]
+    const label = labels[ payload.value ]
     
     return (
       <text
@@ -60,7 +25,7 @@ export default function Performances ( {
         x={ x + ( x - cx ) / 25 }
         textAnchor="middle"
       >
-        {kindLabel}
+        {label}
       </text>
     )
   }

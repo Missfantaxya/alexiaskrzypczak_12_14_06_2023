@@ -7,33 +7,15 @@ import
     Legend
 } from "recharts"
   
-export default function Score ( props )
+export default function Score (
+  {
+    user,
+    progressInPercentage,
+    progressBar
+  } )
 {
-  const dataScore = [
-    {
-        id: 12,
-        userInfos: {
-            firstName: 'Karl',
-            lastName: 'Dovineau',
-            age: 31,
-        },
-        todayScore: 0.12,
-        keyData: {
-            calorieCount: 1930,
-            proteinCount: 155,
-            carbohydrateCount: 290,
-            lipidCount: 50
-      }
-    }
-  ]
-
-  const hasTodayScore = dataScore[0].hasOwnProperty( "todayScore" )
+  const hasTodayScore = user[0].hasOwnProperty( "todayScore" )
   const dataBar = hasTodayScore ? "todayScore" : "score"
-  
-  const progress = dataScore[ 0 ].todayScore
-  const progressInPercentage = progress * 100
-
-  const progressBar = 180 - (progress * 180)
 
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
@@ -48,7 +30,7 @@ export default function Score ( props )
         <RadialBarChart
           width="100%"
           height="100%"
-          data={ dataScore }
+          data={ user }
           startAngle={ progressBar }
           endAngle={ 180 }
           innerRadius="70%"

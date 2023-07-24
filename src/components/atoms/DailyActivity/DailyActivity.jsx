@@ -12,29 +12,13 @@ import
     Bar
   } from "recharts"
 
-export default function DailyActivity ( {activity} )
+export default function DailyActivity ( {activity,labels} )
 { 
-// ----------- à gérer dans le formatter----------------------------
-  // const labels = activity.map( ( element, index ) => ( { [ element.day ]: index + 1 } ) )
-  // console.log( "labels : ", labels ) //~
-  //TODO convertir [labels] en {labels}
-  
-  const dayLabels = {
-    '2020-07-01': '1',
-    '2020-07-02': '2',
-    '2020-07-03': '3',
-    '2020-07-04': '4',
-    '2020-07-05': '5',
-    '2020-07-06': '6',
-    '2020-07-07': '7'
-  }
-  //---------------------------------------
-
   // FIXME RECHARTS raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
   // FIXME RECHARTS il n'y a que 3 label au lieu de 7 sur les abcisses.
   
   const CustomAxisTick = ({ x, y, payload }) => {
-    const label = dayLabels[ payload.value ];
+    const label = labels[ payload.value ];
     
     return (
       <text

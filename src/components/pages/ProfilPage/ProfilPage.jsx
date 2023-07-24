@@ -9,10 +9,14 @@ export default function ProfilPage (
     carbs,
     fats,
     activities,
+    labelsActivity,
     sessions,
+    labelsSession,
     performances,
-    kind,
-    score
+    labelsKind,
+    userScore,
+    progressInPercentage,
+    progressBar
   }
 )
 { 
@@ -26,10 +30,15 @@ export default function ProfilPage (
         carbs = { carbs }
         fats={ fats }
         activity={ activities }
-        score={ score }
-        performances={ performances }
-        kind={ kind }
+        labelsActivity={ labelsActivity }
         sessions={ sessions }
+        labelsSession={ labelsSession }
+        performances={ performances }
+        labelsKind={labelsKind}
+        userScore={ userScore }
+        progressInPercentage={ progressInPercentage }
+        progressBar={ progressBar }
+        
       />
     </>
     )

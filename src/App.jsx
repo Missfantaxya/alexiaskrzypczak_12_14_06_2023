@@ -7,7 +7,6 @@ const formattedData = await formatData()
 
 export default function App ()
 {
-  // console.log( "formattedData : ", formattedData )//*
   return (
     <div className='App'>
       <ProfilPage
@@ -17,11 +16,14 @@ export default function App ()
         carbs={ formattedData.carbs }
         fats={ formattedData.fats }
         activities={ formattedData.activity }
+        labelsActivity={formattedData.labelsActivity}
         sessions={ formattedData.sessions }
+        labelsSession={formattedData.labelsSession}
         performances={ formattedData.performances }
-        kind={formattedData.kind}
-        user={ formattedData.user }
-        score={formattedData.score}
+        labelsKind={ formattedData.labelsKind }
+        userScore={ formattedData.userScore }
+        progressInPercentage={ formattedData.progressInPercentage }
+        progressBar={ formattedData.progressBar }
       />
     </div>
   )

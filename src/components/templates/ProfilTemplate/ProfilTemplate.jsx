@@ -17,10 +17,14 @@ export default function ProfileTemplate ( props )
           carbs={ props.carbs }
           fats={ props.fats }
           activity={ props.activity }
-          score={ props.score }
-          performances={ props.performances }
-          kind={ props.kind }
+          labelsActivity={props.labelsActivity}
           sessions={ props.sessions }
+          labelsSession={ props.labelsSession }
+          performances={ props.performances }
+          labelsKind={ props.labelsKind }
+          userScore={ props.userScore }
+          progressInPercentage={ props.progressInPercentage }
+          progressBar={ props.progressBar }
         />
       </main>
     </div>

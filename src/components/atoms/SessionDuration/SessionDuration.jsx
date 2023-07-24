@@ -11,17 +11,7 @@ import {
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  // console.log("props de SessionDuration :", props) //*
-
-  const dayLabels = {
-    1: 'L',
-    2: 'M',
-    3: 'M',
-    4: 'J',
-    5: 'V',
-    6: 'S',
-    7: 'D'
-  }
+  const dayLabels = props.labels
   
   const CustomAxisTick = ({ x, y, payload }) => {
     const label = dayLabels[ payload.value ]

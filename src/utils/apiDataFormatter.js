@@ -4,66 +4,121 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  const user = data.users
-  
+  const user = data.users.data
 
   // identity--------------------------------
-  const firstname = user.firstname
+  const firstname = user.userInfos.firstName
 
   // nutirtion cards------------------------
-  const count = user.counterValues
+  const count = user.keyData
   const calories = count.calorieCount
   const proteins = count.proteinCount
-   const carbs =count.carbohydrateCount
+  const carbs = count.carbohydrateCount
   const fats = count.lipidCount
 
   // activity graph-----------------
-  const activities = data.activities
-  const activity = activities
-  console.log( "activities : ", activities )
-  console.log( "activity : ", activity )
-  const dayLabels = {
-      '2020-07-01': '1',
-      '2020-07-02': '2',
-      '2020-07-03': '3',
-      '2020-07-04': '4',
-      '2020-07-05': '5',
-      '2020-07-06': '6',
-      '2020-07-07': '7'
+  const activity = data.activities.data.sessions
+  const arrayDate = activity.map( ( element, index ) =>
+    {
+    let date = new Date( element.day )
+    let dayDate = date.getDate()
+    let theDayDate = [ element.day, dayDate ]
+    return theDayDate
     }
-    // FIXME gérer les labels :
-    // const labels = activity.map( ( element, index ) => ( { [ element.day ]:
-    // index + 1 } ) ) 
-    // console.log( "labels : ", labels ) //~ 
-    //TODO convertir [labels] en {labels}
-  
-    
-  
+  )
+  const labelsActivity = Object.fromEntries( arrayDate )
 
   //sessions graph------------------------
-  const sessions = data.sessions
+  const sessions = data.sessions.data.sessions
+  const formatedDay = []
+  activity.forEach( element =>
+  {
+    const daysOfWeek = [
+    "D",
+    "L",
+    "M",
+    "M",
+    "J",
+    "V",
+    "S"
+    ]
+    //conversion en date
+    let date = new Date( element.day )
+    // récupération du jour du mois
+    let dayDate = date.getDate()
+     // récupération du jour de la semaine
+    let dayOfWeek = date.getDay()
+    formatedDay.push( { dayDate:dayDate, dayOfWeek: daysOfWeek[dayOfWeek] } )
+  } )
+
+  const arrayLabelsSession = []
+  sessions.forEach( session =>
+  {
+    let sessionDay = session.day
+    formatedDay.forEach( day => 
+    {
+      let isSameDay = day.dayDate === sessionDay
+      isSameDay && arrayLabelsSession.push( [sessionDay ,day.dayOfWeek ])
+    } )
+  } )
+  const labelsSession = Object.fromEntries( arrayLabelsSession )
   
-  // performances Graph--------------------
-  const performances = data.performances.performanceValues
-  const kind = data.performances.kindValues
-   // TODO reconstruire le [] de data (dans le formatage) pour avoir le bon sens des étiquettes deu graphe de performance.
+  // performances Graph-------------------- 
+  const performances = data.performances.data.data
+  const kind = data.performances.data.kind
+
+  function reverseKindOrder(kind) {
+    const kindOrderChanged = {}
+    const keys = Object.keys(kind)
+    for (let i = keys.length - 1; i >= 0; i--) {
+      kindOrderChanged[ keys.length - i ] = kind[ keys[ i ] ]
+    }
+    return kindOrderChanged
+  }
+  
+  const kindOrderChanged = reverseKindOrder( kind )
+
+  const labelsKind = {}
+
+  function translateToFrench(label) {
+    const translations = {
+      cardio: 'Cardio',
+      energy: 'Énergie',
+      endurance: 'Endurance',
+      strength: 'Force',
+      speed: 'Vitesse',
+      intensity: 'Intensité'
+    }
+    return translations[label] || label;
+  }
+
+  for (let key in kindOrderChanged) {
+    const translatedLabel = translateToFrench(kindOrderChanged[key])
+    labelsKind[key] = translatedLabel
+  }
 
   // score graph---------------------------
-  const score = user.scoreValues
-
+  const hasTodayScore = user.hasOwnProperty( "todayScore" ) 
+  const scoreValue = hasTodayScore ? user.todayScore : user.score
+  const userScore = [ user ]
+  const progressInPercentage = scoreValue * 100
+  const progressBar = 180 - ( scoreValue * 180 )
 
   return ( {
-    user,
+    userScore,
     firstname,
     calories,
     proteins,
     carbs,
     fats,
     activity,
+    labelsActivity,
     sessions,
+    labelsSession,
     performances,
-    kind,
-    score
+    labelsKind,
+    progressInPercentage,
+    progressBar
   } )
 
 }
