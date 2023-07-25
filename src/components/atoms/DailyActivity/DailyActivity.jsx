@@ -17,9 +17,9 @@ export default function DailyActivity ( {activity,labels} )
   // FIXME RECHARTS raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
   // FIXME RECHARTS il n'y a que 3 label au lieu de 7 sur les abcisses.
   
-  const CustomAxisTick = ({ x, y, payload }) => {
-    const label = labels[ payload.value ];
-    
+  const CustomXAxisTick = ({ x, y, payload }) => {
+    const label = labels[ payload.value ]
+
     return (
       <text
         x={ x }
@@ -80,9 +80,9 @@ export default function DailyActivity ( {activity,labels} )
           <XAxis
             dataKey="day"
             tickCount={ 7 }
+            type="number"
+            domain={["dataMin", "dataMax"]}
             tickLine={ false }
-            // domain={['dataMin', 'dataMax']} //TODO ?
-            tick={<CustomAxisTick />}
             axisLine={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
           />
           <YAxis

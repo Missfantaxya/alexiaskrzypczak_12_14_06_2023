@@ -4,6 +4,7 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
+  console.log("data du formatter : ", data)
   const user = data.users
 
   // identity--------------------------------
@@ -17,21 +18,32 @@ export default async function formatData()
   const fats = count.lipidCount
 
   // activity graph-----------------
-  const activity = data.activities.sessions
-  const arrayDate = activity.map( ( element, index ) =>
-    {
+  const primaryActivity = data.activities.sessions
+  console.log( "primaryActivity 0 : ", primaryActivity )
+  //FIXME modifie le tableau primary activity et je ne veux pas
+  const newActivity = primaryActivity.slice( 0 ) //créer une sopie du tableau primaryActivity
+  
+  const activity = newActivity.map( ( element, index ) =>
+  //permet d'avoir les labels numérique à la dte du jour du mois sur les abcisses
+  {
     let date = new Date( element.day )
     let dayDate = date.getDate()
-    let theDayDate = [ element.day, dayDate ]
-    return theDayDate
+    element.day = dayDate
+    // console.log("element : ",element)
+  
+    return element
     }
   )
-  const labelsActivity = Object.fromEntries( arrayDate )
+  console.log( "activity : ", activity )
+  console.log( "primaryActivity 1 : ", primaryActivity )
+  console.log( "newActivity : ", newActivity )
 
   //sessions graph------------------------
   const sessions = data.sessions.sessions
   const formatedDay = []
-  activity.forEach( element =>
+  //FIXME primaryActivity est modifier par le code de activity Graph 
+  console.log("primaryActivity 2 : ",primaryActivity)
+  primaryActivity.forEach( element =>
   {
     const daysOfWeek = [
     "D",
@@ -48,8 +60,10 @@ export default async function formatData()
     let dayDate = date.getDate()
      // récupération du jour de la semaine
     let dayOfWeek = date.getDay()
-    formatedDay.push( { dayDate:dayDate, dayOfWeek: daysOfWeek[dayOfWeek] } )
+    // console.log("dayOfWeek : ",dayOfWeek)
+    formatedDay.push( { dayDate: dayDate, dayOfWeek: daysOfWeek[ dayOfWeek ] } )
   } )
+  // console.log("formatedDay : ",formatedDay)
 
   const arrayLabelsSession = []
   sessions.forEach( session =>
@@ -112,7 +126,7 @@ export default async function formatData()
     carbs,
     fats,
     activity,
-    labelsActivity,
+    // labelsActivity,
     sessions,
     labelsSession,
     performances,
