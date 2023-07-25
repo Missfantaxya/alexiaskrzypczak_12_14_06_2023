@@ -81,9 +81,10 @@ export default function DailyActivity ( {activity,labels} )
             dataKey="day"
             tickCount={ 7 }
             type="number"
-            domain={["dataMin", "dataMax"]}
+            domain={ [ "dataMin", "dataMax" ] }
             tickLine={ false }
-            axisLine={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
+            stroke={getComputedStyle( document.documentElement).getPropertyValue( '--scale-color-weight' )}
+            tick={ getComputedStyle( document.documentElement).getPropertyValue( '--scale-color-weight' ) } 
           />
           <YAxis
             yAxisId="right"
