@@ -4,7 +4,7 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  const user = data.users.data
+  const user = data.users
 
   // identity--------------------------------
   const firstname = user.userInfos.firstName
@@ -17,7 +17,7 @@ export default async function formatData()
   const fats = count.lipidCount
 
   // activity graph-----------------
-  const activity = data.activities.data.sessions
+  const activity = data.activities.sessions
   const arrayDate = activity.map( ( element, index ) =>
     {
     let date = new Date( element.day )
@@ -29,7 +29,7 @@ export default async function formatData()
   const labelsActivity = Object.fromEntries( arrayDate )
 
   //sessions graph------------------------
-  const sessions = data.sessions.data.sessions
+  const sessions = data.sessions.sessions
   const formatedDay = []
   activity.forEach( element =>
   {
@@ -63,9 +63,9 @@ export default async function formatData()
   } )
   const labelsSession = Object.fromEntries( arrayLabelsSession )
   
-  // performances Graph-------------------- 
-  const performances = data.performances.data.data
-  const kind = data.performances.data.kind
+  // performances Graph--------------------
+  const performances = data.performances.data
+  const kind = data.performances.kind
 
   function reverseKindOrder(kind) {
     const kindOrderChanged = {}

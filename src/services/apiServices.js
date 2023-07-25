@@ -11,12 +11,12 @@ import
 
 const BASEURL = "http://localhost:3000/user"
 
-async function getUserData( userId )
+async function getUserData( idUSer )
 {
   try {
-    const response = await axios.get(`${BASEURL}/${userId}`)
+    const response = await axios.get(`${BASEURL}/${idUSer}`)
     // en cas de réussite de la requête
-    const userValues = response.data
+    const userValues = response.data.data
     // Cette valeur sera résolue dans la promesse renvoyée par la fonction
     return userValues 
   } catch (error) {
@@ -26,13 +26,12 @@ async function getUserData( userId )
   }
 }
 
-
-async function getActivityData( userId )
+async function getActivityData( idUSer )
 {
   try {
-    const response = await axios.get(`${BASEURL}/${userId}/activity`)
+    const response = await axios.get(`${BASEURL}/${idUSer}/activity`)
     // en cas de réussite de la requête
-    const activitiesValues = response.data
+    const activitiesValues = response.data.data
     // Cette valeur sera résolue dans la promesse renvoyée par la fonction
     return activitiesValues 
   } catch (error) {
@@ -42,12 +41,13 @@ async function getActivityData( userId )
   }
 }
 
-async function getSessionsData( userId )
+async function getSessionsData( idUSer )
 {
   try {
-    const response = await axios.get(`${BASEURL}/${userId}/average-sessions`)
+    const response = await axios.get(`${BASEURL}/${idUSer}/average-sessions`)
     // en cas de réussite de la requête
-    const sessionsValues = response.data
+    const sessionsValues = response.data.data
+    // const sessionsValues = response.data.data
     // Cette valeur sera résolue dans la promesse renvoyée par la fonction
     return sessionsValues
   } catch (error) {
@@ -57,12 +57,13 @@ async function getSessionsData( userId )
   }
 }
 
-async function getPerformanceData( userId )
+async function getPerformanceData( idUSer )
 {
   try {
-    const response = await axios.get(`${BASEURL}/${userId}/performance`)
+    const response = await axios.get(`${BASEURL}/${idUSer}/performance`)
     // en cas de réussite de la requête
-    const performanceValues = response.data
+    // const performanceValues = response.data
+    const performanceValues = response.data.data
     return performanceValues 
   } catch (error) {
     // en cas d'échec de la requête
@@ -71,24 +72,54 @@ async function getPerformanceData( userId )
   }
 }
 
-    // TODO reformuler pour avoir MockData si pas API voir exemple d'Yves
-export default async function fetchData ( userId, onMock )
+function idChoice( idUSer, array )
 {
-  onMock = false //sert pour les présentation si API cassé ou en travaux
-  userId = 12
-  //TODO const activities = onMock ? USER_ACTIVITY : await getActivityData( userId )
+  const elementValueisIdUSer = ( element ) => element.userId === idUSer
+  const arrayId = array.findIndex( elementValueisIdUSer )
+  return arrayId
+}
 
-  const users = await getUserData( userId )
-  // const users = USER_MAIN_DATA
-  
-  const activities = await getActivityData( userId )
-  // const activities = USER_ACTIVITY
-  
-  const sessions = await getSessionsData( userId )
-  // const sessions = USER_AVERAGE_SESSIONS
+function getUserOnMock ( idUSer )
+{
+  const elementId = ( element ) => element.id === idUSer
+  const idUserOfMock = USER_MAIN_DATA.findIndex( elementId ) 
+  const userValuesOnMock = USER_MAIN_DATA[ idUserOfMock ]
+  return userValuesOnMock
+}
 
-  const performances = await getPerformanceData( userId )
-  // const performances = USER_PERFORMANCE
+function getActivityOnMock ( idUSer )
+{
+  const idActivityOfMock = idChoice( idUSer, USER_ACTIVITY )
+  const activityValuesOnMock = USER_ACTIVITY[ idActivityOfMock ]
+  return activityValuesOnMock
+}
+
+function getSessionOnMock ( idUSer )
+{
+  const idSessionOfMock = idChoice( idUSer, USER_AVERAGE_SESSIONS )
+  const sessionValuesOnMock = USER_AVERAGE_SESSIONS[ idSessionOfMock ]
+  return sessionValuesOnMock
+}
+
+function getPerformanceOnMock ( idUSer )
+{
+  const idPerformanceOfMock = idChoice( idUSer, USER_PERFORMANCE )
+  const performanceValuesOnMock = USER_PERFORMANCE[ idPerformanceOfMock ]
+  return performanceValuesOnMock
+}
+
+export default async function fetchData ( idUSer, onMock )
+{
+  onMock = false //sert pour les présentations si API cassé ou en travaux
+  idUSer = 12
+  
+  const users = onMock ? getUserOnMock( idUSer ) : await getUserData( idUSer )
+  
+  const activities = onMock ?  getActivityOnMock( idUSer ) : await getActivityData( idUSer )
+  
+  const sessions = onMock ? getSessionOnMock( idUSer ) : await getSessionsData( idUSer )
+
+  const performances = onMock ? getPerformanceOnMock( idUSer ) : await getPerformanceData( idUSer )
 
   return ( {
     users,
