@@ -11,17 +11,17 @@ import {
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  const dayLabels = props.labels
+  // const dayLabels = props.labels
   
-  const CustomAxisTick = ({ x, y, payload }) => {
-    const label = dayLabels[ payload.value ]
-    // TODO mettre ce que je peux dans le fichier css
-    return (
-      <text x={x} y={y + 16} textAnchor="middle" fill="#FFF" fontSize="12" opacity= "0.5039569735527039">
-        {label}
-      </text>
-    )
-  }
+  // const CustomAxisTick = ({ x, y, payload }) => {
+  //   const label = dayLabels[ payload.value ]
+  //   // TODO mettre ce que je peux dans le fichier css
+  //   return (
+  //     <text x={x} y={y + 16} textAnchor="middle" fill="#FFF" fontSize="12" opacity= "0.5039569735527039">
+  //       {label}
+  //     </text>
+  //   )
+  // }
 
   const CustomTooltip = ( { active, payload, label } ) =>
   {
@@ -52,6 +52,7 @@ export default function SessionDuration ( props )
   )
 }
 // FIXME ajouter la partie droite après l'activeDot en foncé
+  // FIXME les labels des abcisses
   return (
     <div className="graph__lenght">
       <h3 className="lenght__title">
@@ -67,10 +68,14 @@ export default function SessionDuration ( props )
           height="100%"
         >
           <XAxis
-            dataKey="day"
+            dataKey="dayOfWeek"
             axisLine= { false }
             tickLine= { false }
-            tick={ <CustomAxisTick /> }
+            // tick={ <CustomAxisTick /> }
+            // tick={ {
+            //   fill: getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ),
+            //   fontSize: 12
+            // } }
             padding={{right:13, left:13}}
           />
           <Tooltip
