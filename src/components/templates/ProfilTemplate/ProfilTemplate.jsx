@@ -17,9 +17,7 @@ export default function ProfileTemplate ( props )
           carbs={ props.carbs }
           fats={ props.fats }
           activity={ props.activity }
-          labelsActivity={props.labelsActivity}
           sessions={ props.sessions }
-          labelsSession={ props.labelsSession }
           performances={ props.performances }
           labelsKind={ props.labelsKind }
           userScore={ props.userScore }

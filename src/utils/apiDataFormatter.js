@@ -20,7 +20,6 @@ export default async function formatData()
   const activity = data.activities.sessions
  
   activity.map( ( element ) =>
-  //permet d'avoir les labels numérique à la dte du jour du mois sur les abcisses
   {
     const daysOfWeek = [
     "D",
@@ -39,46 +38,16 @@ export default async function formatData()
   }
   )
 
-  console.log( "activity : ", activity )
-
   //sessions graph------------------------
   const sessions = data.sessions.sessions
-  const formatedDay = []
+  sessions.map( element =>
+  {
+    activity.forEach( el =>
+    {
+      el.dayDate === element.day && ( element.dayWeek = el.dayWeek ) 
+    } )
+  } )
 
-  // activity.forEach( element =>
-  // {
-  //   const daysOfWeek = [
-  //   "D",
-  //   "L",
-  //   "M",
-  //   "M",
-  //   "J",
-  //   "V",
-  //   "S"
-  //   ]
-  //   //conversion en date
-  //   let date = new Date( element.day )
-  //   // récupération du jour du mois
-  //   let dayDate = date.getDate()
-  //    // récupération du jour de la semaine
-  //   let dayOfWeek = date.getDay()
-  //   // console.log("dayOfWeek : ",dayOfWeek)
-  //   formatedDay.push( { dayDate: dayDate, dayOfWeek: daysOfWeek[ dayOfWeek ] } )
-  // } )
-  // console.log("formatedDay : ",formatedDay)
-
-  // const arrayLabelsSession = []
-  // sessions.forEach( session =>
-  // {
-  //   let sessionDay = session.day
-  //   formatedDay.forEach( day => 
-  //   {
-  //     let isSameDay = day.dayDate === sessionDay
-  //     isSameDay && arrayLabelsSession.push( [sessionDay ,day.dayOfWeek ])
-  //   } )
-  // } )
-  // const labelsSession = Object.fromEntries( arrayLabelsSession )
-  
   // performances Graph--------------------
   const performances = data.performances.data
   const kind = data.performances.kind
@@ -129,7 +98,6 @@ export default async function formatData()
     fats,
     activity,
     sessions,
-    // labelsSession,
     performances,
     labelsKind,
     progressInPercentage,

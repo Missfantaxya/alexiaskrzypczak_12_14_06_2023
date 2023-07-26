@@ -17,11 +17,11 @@ export default function Dashboard ( props )
       <div className="dashboard__results">
         <div className="dashboard__graphics">
           <GraphicBar>
-            <DailyActivity activity={props.activity} labels={props.labelsActivity} />
+            <DailyActivity activity={props.activity} />
           </GraphicBar>
           <GraphicsSquares>
             <GraphicSquare>
-              <SessionDuration sessions={ props.sessions } labels={props.labelsSession} />
+              <SessionDuration sessions={ props.sessions } />
             </GraphicSquare>
             <GraphicSquare>
               <Performances

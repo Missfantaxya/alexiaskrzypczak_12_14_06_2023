@@ -16,9 +16,7 @@ export default function App ()
         carbs={ formattedData.carbs }
         fats={ formattedData.fats }
         activities={ formattedData.activity }
-        labelsActivity={formattedData.labelsActivity}
         sessions={ formattedData.sessions }
-        labelsSession={formattedData.labelsSession}
         performances={ formattedData.performances }
         labelsKind={ formattedData.labelsKind }
         userScore={ formattedData.userScore }
