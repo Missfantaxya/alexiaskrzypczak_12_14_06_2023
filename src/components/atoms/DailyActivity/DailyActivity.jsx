@@ -13,26 +13,7 @@ import
   } from "recharts"
 
 export default function DailyActivity ( {activity,labels} )
-{ 
-  // FIXME RECHARTS raccourcir l'axe des abcisses (ne doit pas dépasser des labels)
-  // FIXME RECHARTS il n'y a que 3 label au lieu de 7 sur les abcisses.
-  
-  const CustomXAxisTick = ({ x, y, payload }) => {
-    const label = labels[ payload.value ]
-
-    return (
-      <text
-        x={ x }
-        y={ y + 16 }
-        textAnchor="middle"
-        fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ) }
-        fontSize="14"
-      >
-        {label}
-      </text>
-    )
-  }
-
+{
   const CustomYAxisTick = ( { x, y, payload } ) =>
   {
     const { value } = payload
@@ -78,13 +59,17 @@ export default function DailyActivity ( {activity,labels} )
         >
           <CartesianGrid vertical= {false} strokeDasharray= "3 3" />
           <XAxis
-            dataKey="day"
+            dataKey="dayDate"
             tickCount={ 7 }
             type="number"
             domain={ [ "dataMin", "dataMax" ] }
             tickLine={ false }
             stroke={getComputedStyle( document.documentElement).getPropertyValue( '--scale-color-weight' )}
-            tick={ getComputedStyle( document.documentElement).getPropertyValue( '--scale-color-weight' ) } 
+            tick={ {
+              fill: getComputedStyle( document.documentElement ).getPropertyValue( '--scale-color-weight' ),
+              fontSize: 14
+            } }
+            
           />
           <YAxis
             yAxisId="right"
