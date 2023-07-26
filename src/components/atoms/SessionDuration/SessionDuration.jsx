@@ -3,26 +3,17 @@ import {
   ResponsiveContainer,
   LineChart,
   XAxis,
+  YAxis,
   Line,
-  Tooltip
+  Tooltip,
+  ReferenceArea
 } from "recharts"
 
 //FIXME ajouter un écart au labels des absisses avec les bords du graph
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  // const dayLabels = props.labels
-  
-  // const CustomAxisTick = ({ x, y, payload }) => {
-  //   const label = dayLabels[ payload.value ]
-  //   // TODO mettre ce que je peux dans le fichier css
-  //   return (
-  //     <text x={x} y={y + 16} textAnchor="middle" fill="#FFF" fontSize="12" opacity= "0.5039569735527039">
-  //       {label}
-  //     </text>
-  //   )
-  // }
-
+  console.log("props de session : ", props)
   const CustomTooltip = ( { active, payload, label } ) =>
   {
     if ( active && payload && payload.length )
@@ -52,7 +43,6 @@ export default function SessionDuration ( props )
   )
 }
 // FIXME ajouter la partie droite après l'activeDot en foncé
-  // FIXME les labels des abcisses
   return (
     <div className="graph__lenght">
       <h3 className="lenght__title">
@@ -60,7 +50,7 @@ export default function SessionDuration ( props )
       </h3>
       <ResponsiveContainer
         width="100%"
-        height="70%"
+        height="75%"
       >
         <LineChart
           data={ props.sessions }
@@ -68,26 +58,41 @@ export default function SessionDuration ( props )
           height="100%"
         >
           <XAxis
-            dataKey="dayOfWeek"
+            dataKey="dayWeek"
             axisLine= { false }
             tickLine= { false }
-            // tick={ <CustomAxisTick /> }
-            // tick={ {
-            //   fill: getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ),
-            //   fontSize: 12
-            // } }
-            padding={{right:13, left:13}}
+            tick={ {
+              fill: getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ),
+              fontSize: 12,
+              fontWeight: 500,
+              opacity: "0.5039569735527039"
+            } }
+            padding={{right:13, left:14}}
+          />
+          <YAxis
+            datakey="sessionLength"
+            hide={ true }
+            type="number"
+            domain={[0, "dataMax + 3"]}
           />
           <Tooltip
             content={ <CustomTooltip /> }
             cursor={ false }
+          />
+          <ReferenceArea
+            x1={3}
+            x2={5}
+            y1={ 0 }
+            y2={ 50 }
+            stroke="#000"
+            strokeOpacity={ 0.3 }
           />
           <Line
             type="monotone"
             dot={false}
             dataKey="sessionLength"
             stroke={ getComputedStyle( document.documentElement ).getPropertyValue( '--light-color-objectif' ) }
-            opacity= "0.5039569735527039"
+            opacity= "0.403191"
             activeDot={ <CustomDot /> }
           />
         </LineChart>
