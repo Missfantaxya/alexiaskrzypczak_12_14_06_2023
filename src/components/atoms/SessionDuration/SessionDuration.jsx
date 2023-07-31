@@ -5,31 +5,41 @@ import {
   XAxis,
   YAxis,
   Line,
-  Tooltip,
-  ReferenceArea
+  Tooltip
 } from "recharts"
 
 //FIXME ajouter un écart au labels des absisses avec les bords du graph
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  console.log("props de session : ", props)
+  // console.log( "props de session : ", props ) //*
+  
   const CustomTooltip = ( { active, payload, label } ) =>
-  {
+  { 
     if ( active && payload && payload.length )
     {
       // Données du point survolé
-      const data = payload[ 0 ].payload 
+      const data = payload[ 0 ].payload
+      // console.log( "data de customTooltip: ", data ) //*
       
       return (
-        <div className="lenght__customTooltip" >
-          <p className="lenght__tooltipValue">
-            { `${ data.sessionLength } min` }
-          </p>
+        <div>
+          <div className="lenght__customTooltip" >
+            <p className="lenght__tooltipValue">
+              { `${ data.sessionLength } min` }
+            </p>
+          </div>
         </div>
       )
     }
     return null
+  }
+
+  const wrapperStyleToolTips = {
+    height: "25.683vh",
+    backgroundColor: "rgba(0, 0, 0, 0.09)",
+    position: "absolute",
+    
   }
 
   const CustomDot = (props) => {
@@ -78,14 +88,8 @@ export default function SessionDuration ( props )
           <Tooltip
             content={ <CustomTooltip /> }
             cursor={ false }
-          />
-          <ReferenceArea
-            x1={3}
-            x2={5}
-            y1={ 0 }
-            y2={ 50 }
-            stroke="#000"
-            strokeOpacity={ 0.3 }
+            wrapperStyle={ wrapperStyleToolTips }
+            offset={ 0 }
           />
           <Line
             type="monotone"

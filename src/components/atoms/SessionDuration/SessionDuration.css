@@ -26,7 +26,12 @@
   font-size: 0.78vh;
   padding: 0 0.47vw;
   height: 2.44vh;
+  width: max-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* position:absolute;  */
+  /* top: 12.8415vh; */
+  /* left:2px; */
 }
+
