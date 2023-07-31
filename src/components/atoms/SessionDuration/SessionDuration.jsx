@@ -23,23 +23,18 @@ export default function SessionDuration ( props )
       // console.log( "data de customTooltip: ", data ) //*
       
       return (
-        <div>
-          <div className="lenght__customTooltip" >
-            <p className="lenght__tooltipValue">
-              { `${ data.sessionLength } min` }
-            </p>
+        <>
+          <div className="lenght__tooltipWrapper">
+            <div className="lenght__customTooltip" >
+              <p className="lenght__tooltipValue">
+                { `${ data.sessionLength } min` }
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       )
     }
     return null
-  }
-
-  const wrapperStyleToolTips = {
-    height: "25.683vh",
-    backgroundColor: "rgba(0, 0, 0, 0.09)",
-    position: "absolute",
-    
   }
 
   const CustomDot = (props) => {
@@ -60,7 +55,7 @@ export default function SessionDuration ( props )
       </h3>
       <ResponsiveContainer
         width="100%"
-        height="75%"
+        height="100%"
       >
         <LineChart
           data={ props.sessions }
@@ -83,13 +78,13 @@ export default function SessionDuration ( props )
             datakey="sessionLength"
             hide={ true }
             type="number"
-            domain={[0, "dataMax + 3"]}
+            domain={[0, "dataMax + 35"]}
           />
           <Tooltip
             content={ <CustomTooltip /> }
             cursor={ false }
-            wrapperStyle={ wrapperStyleToolTips }
             offset={ 0 }
+            coordinate={{x: 5}}
           />
           <Line
             type="monotone"

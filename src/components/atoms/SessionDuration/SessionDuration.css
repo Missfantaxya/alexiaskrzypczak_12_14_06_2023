@@ -7,6 +7,7 @@
   align-items: end;
   background-color: var(--main-color-objectif);
   position: relative;
+  /* overflow: hidden; //! */
 }
 
 .lenght__title {
@@ -21,6 +22,14 @@
   left: 2.36vw;
 }
 
+.lenght__tooltipWrapper{
+  height: 25.683vh;
+  width: 17.917vw; 
+  background-color: rgba(0,0,0,0.09);
+  display: flex;
+  align-items: center;
+}
+
 .lenght__customTooltip{
   background-color: var(--light-color-objectif);
   font-size: 0.78vh;
@@ -30,8 +39,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* position:absolute;  */
-  /* top: 12.8415vh; */
-  /* left:2px; */
+  margin-left: 2px;
 }
 
