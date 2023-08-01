@@ -36,17 +36,19 @@ export default function Score (
           <RadialBar
             dataKey={ "scoreValue" }
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ) }
-            cornerRadius={10}
+            cornerRadius={ 10 }
           />
           <Legend
             verticalAlign="middle"
             align="center"
             wrapperStyle={ {
               backgroundColor: circleBackgroundKpi,
+              backgroundColor: "blue",
               width: "11.335vw",
               height: "11.335vw",
               borderRadius: "50%",
-              left: "3.3VW",
+              left: "50%",
+              transform:"translateX(-50%)",
               display: "flex",
               justifyContent: "center",
               alignItems: "center"

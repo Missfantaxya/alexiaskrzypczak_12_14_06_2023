@@ -7,7 +7,7 @@
   align-items: end;
   background-color: var(--main-color-objectif);
   position: relative;
-  /* overflow: hidden; //! */
+  overflow: hidden;
 }
 
 .lenght__title {
@@ -24,8 +24,10 @@
 
 .lenght__tooltipWrapper{
   height: 25.683vh;
-  width: 17.917vw; 
-  background-color: rgba(0,0,0,0.09);
+  /* width: 17.917vw;  */
+  /* background-color: rgba(0,0,0,0.09); */
+  /* Meilleur visibilité pour la construction */
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
 }

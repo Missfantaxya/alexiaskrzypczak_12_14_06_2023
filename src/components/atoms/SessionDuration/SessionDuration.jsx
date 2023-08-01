@@ -84,7 +84,6 @@ export default function SessionDuration ( props )
             content={ <CustomTooltip /> }
             cursor={ false }
             offset={ 0 }
-            coordinate={{x: 5}}
           />
           <Line
             type="monotone"
