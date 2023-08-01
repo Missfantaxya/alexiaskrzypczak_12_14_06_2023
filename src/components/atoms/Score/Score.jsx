@@ -14,9 +14,6 @@ export default function Score (
     progressBar
   } )
 {
-  const hasTodayScore = user[0].hasOwnProperty( "todayScore" )
-  const dataBar = hasTodayScore ? "todayScore" : "score"
-
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
     .getPropertyValue("--circle-background-kpi")
 
@@ -37,7 +34,7 @@ export default function Score (
           outerRadius="80%"
         >
           <RadialBar
-            dataKey={ dataBar }
+            dataKey={ "scoreValue" }
             fill={ getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ) }
             cornerRadius={10}
           />

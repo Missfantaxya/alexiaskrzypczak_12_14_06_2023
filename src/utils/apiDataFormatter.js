@@ -4,13 +4,21 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  const user = data.users
+  const ThisUser = data.users
+  const hasTodayScore = ThisUser.hasOwnProperty( "todayScore" ) 
+  const scoreValue = hasTodayScore ? ThisUser.todayScore : ThisUser.score 
+  const user = {
+    id: ThisUser.id,
+    keyData: ThisUser.keyData,
+    scoreValue: scoreValue,
+    userInfos:ThisUser.userInfos
+  }
 
   // identity--------------------------------
-  const firstname = user.userInfos.firstName
+  const firstname = ThisUser.userInfos.firstName
 
   // nutirtion cards------------------------
-  const count = user.keyData
+  const count = ThisUser.keyData
   const calories = count.calorieCount
   const proteins = count.proteinCount
   const carbs = count.carbohydrateCount
@@ -83,8 +91,6 @@ export default async function formatData()
   }
 
   // score graph---------------------------
-  const hasTodayScore = user.hasOwnProperty( "todayScore" ) 
-  const scoreValue = hasTodayScore ? user.todayScore : user.score
   const userScore = [ user ]
   const progressInPercentage = scoreValue * 100
   const progressBar = 180 - ( scoreValue * 180 )
@@ -103,6 +109,5 @@ export default async function formatData()
     progressInPercentage,
     progressBar
   } )
-
 }
 
