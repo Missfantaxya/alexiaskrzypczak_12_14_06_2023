@@ -29,30 +29,40 @@ export default async function formatData()
  
   activity.map( ( element ) =>
   {
-    const daysOfWeek = [
-    "D",
-    "L",
-    "M",
-    "M",
-    "J",
-    "V",
-    "S"
-    ]
+    // const daysOfWeek = [
+    // "D",
+    // "L",
+    // "M",
+    // "M",
+    // "J",
+    // "V",
+    // "S"
+    // ]
     let date = new Date( element.day )
     let dayDate = date.getDate()
-    let dayOfWeek = date.getDay()
+    // let dayOfWeek = date.getDay()
     element.dayDate = dayDate
-    element.dayWeek = daysOfWeek[ dayOfWeek ]
+    // element.dayWeek = daysOfWeek[ dayOfWeek ]
   }
   )
 
   //sessions graph------------------------
   const sessions = data.sessions.sessions
+  console.log("sessions du formatter : ", sessions)
+  const dayLabels = [
+    {dayNumber:1,dayOfWeek:"L"},
+    {dayNumber:2,dayOfWeek:"M"},
+    {dayNumber:3,dayOfWeek:"M"},
+    {dayNumber:4,dayOfWeek:"J"},
+    {dayNumber:5,dayOfWeek:"V"},
+    {dayNumber:6,dayOfWeek:"S"},
+    {dayNumber:7,dayOfWeek:"D"},
+    ]
   sessions.map( element =>
   {
-    activity.forEach( el =>
+    dayLabels.map( el => 
     {
-      el.dayDate === element.day && ( element.dayWeek = el.dayWeek ) 
+      element.day === el.dayNumber && ( element.dayWeek = el.dayOfWeek )
     } )
   } )
 

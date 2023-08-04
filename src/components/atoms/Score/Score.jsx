@@ -15,8 +15,13 @@ export default function Score (
   } )
 {
   const circleBackgroundKpi = getComputedStyle(document.documentElement)
-    .getPropertyValue("--circle-background-kpi")
-
+    .getPropertyValue( "--circle-background-kpi" )
+  
+  const wrapperScore = document.querySelectorAll( '.recharts-legend-wrapper' )
+  // console.log( "wrapperScore[1] : ", wrapperScore[ 1 ] ) //?
+  // console.log( "Type de wrapperScore[1] : ",typeof wrapperScore[ 1 ] ) //?
+  const wrapperWidth = wrapperScore
+  // console.log( "wrapperWidth : ", wrapperWidth ) //?
   //FIXME voir pour la rond blanc centrale qui cache le trait rouge sur grand format
   return (
     <div className="graph__score">
@@ -28,8 +33,9 @@ export default function Score (
           width="100%"
           height="100%"
           data={ user }
-          startAngle={ progressBar }
-          endAngle={ 180 }
+          // startAngle={ progressBar }
+          // startAngle={ 0 } // pour le style de legend
+          // endAngle={ 180 }
           innerRadius="70%"
           outerRadius="80%"
         >
@@ -44,8 +50,9 @@ export default function Score (
             wrapperStyle={ {
               backgroundColor: circleBackgroundKpi,
               backgroundColor: "blue",
+              // width: "70%",
               width: "11.335vw",
-              height: "11.335vw",
+              height: "11.335vw", // idem width
               borderRadius: "50%",
               left: "50%",
               transform:"translateX(-50%)",

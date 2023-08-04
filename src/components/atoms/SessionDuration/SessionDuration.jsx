@@ -12,7 +12,7 @@ import {
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  // console.log( "props de session : ", props ) //*
+  console.log( "props de session : ", props ) //*
   
   const CustomTooltip = ( { active, payload, label } ) =>
   { 
@@ -20,7 +20,6 @@ export default function SessionDuration ( props )
     {
       // Données du point survolé
       const data = payload[ 0 ].payload
-      // console.log( "data de customTooltip: ", data ) //*
       
       return (
         <>
