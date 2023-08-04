@@ -33,7 +33,6 @@ export default function Dashboard ( props )
               <Score
                 user={ props.userScore }
                 progressInPercentage={ props.progressInPercentage }
-                progressBar={ props.progressBar }
               />
             </GraphicSquare>
           </GraphicsSquares>

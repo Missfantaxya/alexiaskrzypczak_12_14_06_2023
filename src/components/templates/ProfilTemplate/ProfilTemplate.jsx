@@ -22,7 +22,6 @@ export default function ProfileTemplate ( props )
           labelsKind={ props.labelsKind }
           userScore={ props.userScore }
           progressInPercentage={ props.progressInPercentage }
-          progressBar={ props.progressBar }
         />
       </main>
     </div>

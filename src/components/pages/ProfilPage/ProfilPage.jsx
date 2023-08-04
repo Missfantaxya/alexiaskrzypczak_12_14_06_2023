@@ -13,8 +13,7 @@ export default function ProfilPage (
     performances,
     labelsKind,
     userScore,
-    progressInPercentage,
-    progressBar
+    progressInPercentage
   }
 )
 { 
@@ -33,8 +32,6 @@ export default function ProfilPage (
         labelsKind={labelsKind}
         userScore={ userScore }
         progressInPercentage={ progressInPercentage }
-        progressBar={ progressBar }
-        
       />
     </>
     )

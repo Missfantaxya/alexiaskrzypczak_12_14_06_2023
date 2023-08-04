@@ -21,7 +21,6 @@ export default function App ()
         labelsKind={ formattedData.labelsKind }
         userScore={ formattedData.userScore }
         progressInPercentage={ formattedData.progressInPercentage }
-        progressBar={ formattedData.progressBar }
       />
     </div>
   )

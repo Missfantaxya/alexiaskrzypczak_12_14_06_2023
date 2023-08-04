@@ -4,7 +4,6 @@
   height: 100%;
   border-radius: 5px;
   background-color: var(--background-color-kpi);
-  /* background-color: blue; */
 }
 
 .score__title{
@@ -12,6 +11,13 @@
   top: 2.34vh;
   left: 2.08vw;
   font-size: 1.46vh;
+}
+
+.center__svg{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
 }
 
 .barChart__legendScore{
@@ -24,7 +30,8 @@
   font-size: 2.53vh;
   line-height: 2.53vh;
   font-weight: 700;
-  color:var(--data-color-kpi)
+  color:var(--data-color-kpi);
+  /* background-color: var(--circle-background-kpi); */
 }
 
 .barChart__legendText{

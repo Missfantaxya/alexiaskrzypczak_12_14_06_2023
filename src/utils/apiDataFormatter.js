@@ -90,73 +90,21 @@ export default async function formatData()
   const hasTodayScore = user.hasOwnProperty( "todayScore" ) 
   const scoreValue = hasTodayScore ? user.todayScore : user.score 
   const progressInPercentage = scoreValue * 100
-  const progressBar = 180 - ( scoreValue * 180 )
   const userScore = [
     {
-      name:"legend1",
-      scoreValue: 100 ,
+      scoreValue: 100,
       fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue(
+      '--circle-background-kpi' )
     },
     {
-      name:"legend2",
-      scoreValue: 100
-      ,
-      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend3",
-      scoreValue: 100
-      ,
-      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend4",
-      scoreValue: 100
-      ,
-      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend5",
-      scoreValue: 100
-      ,
-      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend6",
-      scoreValue: 100
-      ,
-      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend7",
-      scoreValue: 100
-      ,
-      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name:"legend8",
-      scoreValue: 100
-      ,
-      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
-    },
-    {
-      name: "score",
       scoreValue: progressInPercentage,
       fill: getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ),
-      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' )
+      stroke: getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ),
     }
   ]
 
   return ( {
-    userScore,
     firstname,
     calories,
     proteins,
@@ -166,8 +114,8 @@ export default async function formatData()
     sessions,
     performances,
     labelsKind,
-    progressInPercentage,
-    progressBar
+    userScore,
+    progressInPercentage
   } )
 }
 
