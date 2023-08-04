@@ -4,6 +4,7 @@
   height: 100%;
   border-radius: 5px;
   background-color: var(--background-color-kpi);
+  /* background-color: blue; */
 }
 
 .score__title{
@@ -14,6 +15,10 @@
 }
 
 .barChart__legendScore{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   font-size: 2.53vh;

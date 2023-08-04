@@ -4,21 +4,18 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  const ThisUser = data.users
-  const hasTodayScore = ThisUser.hasOwnProperty( "todayScore" ) 
-  const scoreValue = hasTodayScore ? ThisUser.todayScore : ThisUser.score 
-  const user = {
-    id: ThisUser.id,
-    keyData: ThisUser.keyData,
-    scoreValue: scoreValue,
-    userInfos:ThisUser.userInfos
-  }
+  const user = data.users
+  // const user = {
+  //   id: ThisUser.id,
+  //   keyData: ThisUser.keyData,
+  //   userInfos: ThisUser.userInfos
+  // }
 
   // identity--------------------------------
-  const firstname = ThisUser.userInfos.firstName
+  const firstname = user.userInfos.firstName
 
   // nutirtion cards------------------------
-  const count = ThisUser.keyData
+  const count = user.keyData
   const calories = count.calorieCount
   const proteins = count.proteinCount
   const carbs = count.carbohydrateCount
@@ -29,26 +26,15 @@ export default async function formatData()
  
   activity.map( ( element ) =>
   {
-    // const daysOfWeek = [
-    // "D",
-    // "L",
-    // "M",
-    // "M",
-    // "J",
-    // "V",
-    // "S"
-    // ]
     let date = new Date( element.day )
     let dayDate = date.getDate()
-    // let dayOfWeek = date.getDay()
     element.dayDate = dayDate
-    // element.dayWeek = daysOfWeek[ dayOfWeek ]
   }
   )
 
   //sessions graph------------------------
   const sessions = data.sessions.sessions
-  console.log("sessions du formatter : ", sessions)
+
   const dayLabels = [
     {dayNumber:1,dayOfWeek:"L"},
     {dayNumber:2,dayOfWeek:"M"},
@@ -100,10 +86,74 @@ export default async function formatData()
     labelsKind[key] = translatedLabel
   }
 
-  // score graph---------------------------
-  const userScore = [ user ]
+  // score graph--------------------------- 
+  const hasTodayScore = user.hasOwnProperty( "todayScore" ) 
+  const scoreValue = hasTodayScore ? user.todayScore : user.score 
   const progressInPercentage = scoreValue * 100
   const progressBar = 180 - ( scoreValue * 180 )
+  const userScore = [
+    {
+      name:"legend1",
+      scoreValue: 100 ,
+      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend2",
+      scoreValue: 100
+      ,
+      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend3",
+      scoreValue: 100
+      ,
+      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend4",
+      scoreValue: 100
+      ,
+      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend5",
+      scoreValue: 100
+      ,
+      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend6",
+      scoreValue: 100
+      ,
+      fill:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend7",
+      scoreValue: 100
+      ,
+      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name:"legend8",
+      scoreValue: 100
+      ,
+      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )
+    },
+    {
+      name: "score",
+      scoreValue: progressInPercentage,
+      fill: getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' ),
+      stroke:getComputedStyle( document.documentElement ).getPropertyValue( '--main-color-kpi' )
+    }
+  ]
 
   return ( {
     userScore,

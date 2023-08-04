@@ -12,8 +12,6 @@ import {
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
-  console.log( "props de session : ", props ) //*
-  
   const CustomTooltip = ( { active, payload, label } ) =>
   { 
     if ( active && payload && payload.length )
@@ -63,6 +61,7 @@ export default function SessionDuration ( props )
         >
           <XAxis
             dataKey="dayWeek"
+            type="category" //?
             axisLine= { false }
             tickLine= { false }
             tick={ {
