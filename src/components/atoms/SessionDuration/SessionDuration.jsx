@@ -8,7 +8,6 @@ import {
   Tooltip
 } from "recharts"
 
-//FIXME ajouter un écart au labels des absisses avec les bords du graph
 //FIXME faire aller la courbe jusqu'aux bords du graph
 export default function SessionDuration ( props )
 {
@@ -18,7 +17,6 @@ export default function SessionDuration ( props )
     {
       // Données du point survolé
       const data = payload[ 0 ].payload
-      console.log("data de customTooltip :", data)
       
       return (
         <>
