@@ -12,7 +12,6 @@ export default function Score (
     progressInPercentage
   } )
 {
-  //FIXME centre blanc à faire vérifier
 
   return (
     <div className="graph__score">
@@ -25,8 +24,6 @@ export default function Score (
           height="100%"
           data={ user }
           barSize={ 10 }
-          // barGap={ 0 } //!
-          // barCategoryGap="0%" //!
           startAngle={ 180 }
           endAngle={-180}
           innerRadius="70%"
@@ -35,7 +32,6 @@ export default function Score (
           <RadialBar
             dataKey={ "scoreValue" }
             cornerRadius={ 10 }
-            // clockWise={true} //!
             />
         </RadialBarChart>
       </ResponsiveContainer>
@@ -49,9 +45,8 @@ export default function Score (
           <circle
             cx="50"
             cy="50"
-            r="36%" // Le rayon du cercle blanc (ajustez selon vos besoins)
-            fill={getComputedStyle( document.documentElement ).getPropertyValue(
-      '--circle-background-kpi' )}
+            r="36%" // Le rayon du cercle blanc (ajuster selon vos besoins)
+            fill={getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )}
           />
         </svg>
       <span className="barChart__legendScore">

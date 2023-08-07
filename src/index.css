@@ -1,5 +1,5 @@
 @import url("reset.css");
-/* TODO faire les variables pour les taille de police en vh avec min-max... */
+
 :root {
   --light-color: #FFFFFF;
   --dark-color: #020203;
