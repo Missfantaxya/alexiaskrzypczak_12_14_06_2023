@@ -45,7 +45,6 @@ export default function SessionDuration ( props )
     </svg>
   )
 }
-// FIXME ajouter la partie droite après l'activeDot en foncé
   return (
     <div className="graph__lenght">
       <h3 className="lenght__title">
