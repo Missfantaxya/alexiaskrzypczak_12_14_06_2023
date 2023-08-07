@@ -18,6 +18,7 @@ export default function SessionDuration ( props )
     {
       // Données du point survolé
       const data = payload[ 0 ].payload
+      console.log("data de customTooltip :", data)
       
       return (
         <>
@@ -82,6 +83,8 @@ export default function SessionDuration ( props )
             content={ <CustomTooltip /> }
             cursor={ false }
             offset={ 0 }
+            wrapperStyle={ {width:"17.917vw"} }
+            allowEscapeViewBox={{x: true}}
           />
           <Line
             type="monotone"

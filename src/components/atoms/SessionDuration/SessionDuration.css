@@ -24,12 +24,16 @@
 
 .lenght__tooltipWrapper{
   height: 25.683vh;
+  min-width: max-content;
+  
   /* width: 17.917vw;  */
-  background-color: rgba(0,0,0,0.09);
+  /* background-color: rgba(0,0,0,0.09); */
   /* Meilleur visibilité pour la construction */
-  /* background-color: rgba(0,0,0,0.5); */
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
+  position : relative;
+  top: -5px;
 }
 
 .lenght__customTooltip{
@@ -41,6 +45,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 2px;
+  margin: auto 2px;
 }
 
