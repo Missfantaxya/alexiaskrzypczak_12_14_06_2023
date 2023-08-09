@@ -21,6 +21,41 @@ export default async function formatData()
   const carbs = count.carbohydrateCount
   const fats = count.lipidCount
 
+  const nutritionData = [
+  {
+    id: 1,
+    title: "Calories",
+    unity: "kCal",
+    src: "src/assets/calories-icon.svg",
+    alt: "calorie-icon",
+    quantity: calories
+  },
+  {
+    id: 2,
+    title: "Protéines",
+    unity: "g",
+    src: "src/assets/protein-icon.svg",
+    alt: "protein-icon",
+    quantity: proteins
+  },
+  {
+    id: 3,
+    title: "Glucides",
+    unity: "g",
+    src: "src/assets/carbs-icon.svg",
+    alt: "crabs-icon",
+    quantity: carbs
+  },
+  {
+    id: 4,
+    title: "Lipides",
+    unity: "g",
+    src: "src/assets/fat-icon.svg",
+    alt: "fat-icon",
+    quantity: fats
+  }
+]
+
   // activity graph-----------------
   const activity = data.activities.sessions
  
@@ -106,10 +141,7 @@ export default async function formatData()
 
   return ( {
     firstname,
-    calories,
-    proteins,
-    carbs,
-    fats,
+    nutritionData,
     activity,
     sessions,
     performances,

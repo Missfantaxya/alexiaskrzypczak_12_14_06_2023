@@ -4,10 +4,7 @@ import ProfilTemplate from "../../templates/ProfilTemplate/ProfilTemplate"
 export default function ProfilPage (
   {
     firstname,
-    calories,
-    proteins,
-    carbs,
-    fats,
+    nutrition,
     activities,
     sessions,
     performances,
@@ -21,11 +18,8 @@ export default function ProfilPage (
   return (
     <>
       <ProfilTemplate
-        firstname = { firstname}
-        calories = { calories }
-        proteins = { proteins }
-        carbs = { carbs }
-        fats={ fats }
+        firstname={ firstname }
+        nutrition={nutrition}
         activity={ activities }
         sessions={ sessions }
         performances={ performances }

@@ -37,12 +37,7 @@ export default function Dashboard ( props )
             </GraphicSquare>
           </GraphicsSquares>
         </div>
-        <ResultsNutrition
-          calories={ props.calories }
-          proteins={ props.proteins }
-          carbs={ props.carbs }
-          fats={ props.fats }
-        />
+        <ResultsNutrition nutrition={props.nutrition} />
       </div>
     </div>
   )

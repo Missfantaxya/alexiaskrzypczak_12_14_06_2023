@@ -2,7 +2,7 @@ import "./NavVertical.css"
 import NavButtons from "../../molecules/NavButtons/NavButtons"
 import Copyright from "../../atoms/Copyright/Copyright"
 
-export default function NavVertical ( props )
+export default function NavVertical ( )
 {
   // Get today's date
   const date = new Date()

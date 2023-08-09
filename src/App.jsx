@@ -5,16 +5,15 @@ import './App.css'
 
 const formattedData = await formatData()
 
+
 export default function App ()
 {
+  
   return (
     <div className='App'>
       <ProfilPage
         firstname={ formattedData.firstname }
-        calories={ formattedData.calories }
-        proteins={ formattedData.proteins }
-        carbs={ formattedData.carbs }
-        fats={ formattedData.fats }
+        nutrition={formattedData.nutritionData}
         activities={ formattedData.activity }
         sessions={ formattedData.sessions }
         performances={ formattedData.performances }
