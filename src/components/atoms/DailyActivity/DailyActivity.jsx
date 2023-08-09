@@ -33,8 +33,10 @@ export default function DailyActivity ( {activity,labels} )
 
   const CustomTooltip = ( { active, payload, label } ) =>
   {
-    if (active && payload && payload.length){
-      const data = payload[ 0 ].payload // Données du point survolé
+    if ( active && payload && payload.length )
+    {
+      // Données du point survolé
+      const data = payload[ 0 ].payload 
       
       return (
         <div className="weight__customTooltip" >
@@ -45,6 +47,7 @@ export default function DailyActivity ( {activity,labels} )
     }
     return null
   }
+
 
   return (
     <>
@@ -88,7 +91,10 @@ export default function DailyActivity ( {activity,labels} )
             type= "number"
             domain={ [ 0, 'dataMax + 10' ] }
           />
-        <Tooltip content={ <CustomTooltip /> } />
+          <Tooltip
+            content={ <CustomTooltip /> }
+            cursor={ { fill: "rgba(196, 196, 196, 0.50)" } }
+          />
           <Legend
             verticalAlign="top"
             align="right"
