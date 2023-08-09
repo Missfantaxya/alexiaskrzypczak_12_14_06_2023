@@ -4,12 +4,8 @@ import fetchData from '../services/apiServices'
 export default async function formatData()
 {
   const data = await fetchData()
-  const user = data.users
-  // const user = {
-  //   id: ThisUser.id,
-  //   keyData: ThisUser.keyData,
-  //   userInfos: ThisUser.userInfos
-  // }
+  const newData={...data}
+  const user = newData.users
 
   // identity--------------------------------
   const firstname = user.userInfos.firstName
