@@ -1,11 +1,11 @@
 // Fichier de formatage de données API
 import fetchData from '../services/apiServices'
 
-export default async function formatData()
+export default async function formatData(idUSer, onMock)
 {
-  const data = await fetchData()
-  const newData={...data}
-  const user = newData.users
+  const originalData = await fetchData( idUSer, onMock )
+  const data = {...originalData}
+  const user = data.users
 
   // identity--------------------------------
   const firstname = user.userInfos.firstName
@@ -53,13 +53,10 @@ export default async function formatData()
 ]
 
   // activity graph-----------------
-  const activity = data.activities.sessions
- 
-  activity.map( ( element ) =>
+  const activity = data.activities.sessions.map( ( element ) =>
   {
     let date = new Date( element.day )
-    let dayDate = date.getDate()
-    element.dayDate = dayDate
+    return{...element, dateFormated: date.getDate()}
   }
   )
 

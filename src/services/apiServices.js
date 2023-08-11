@@ -109,10 +109,7 @@ function getPerformanceOnMock ( idUSer )
 }
 
 export default async function fetchData ( idUSer, onMock )
-{
-  onMock = false //sert pour les présentations si API cassé ou en travaux
-  idUSer = 12
-  
+{ 
   const users = onMock ? getUserOnMock( idUSer ) : await getUserData( idUSer )
   
   const activities = onMock ?  getActivityOnMock( idUSer ) : await getActivityData( idUSer )

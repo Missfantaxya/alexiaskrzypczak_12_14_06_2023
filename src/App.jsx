@@ -3,7 +3,7 @@ import ProfilPage from './components/pages/ProfilPage/ProfilPage'
 
 import './App.css'
 
-const formattedData = await formatData()
+const formattedData = await formatData(12, false)
 
 
 export default function App ()
