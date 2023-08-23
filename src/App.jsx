@@ -1,6 +1,8 @@
 import formatData from "./utils/apiDataFormatter"
 import ProfilPage from './components/pages/ProfilPage/ProfilPage'
 
+import { useState, useEffect } from "react"
+
 import './App.css'
 
 // const formattedData = await formatData(12, false)
@@ -17,7 +19,7 @@ export default function App ()
     {
       const data = await formatData( 12, false )
       setFormattedData( data )
-      setLoading(data)
+      setLoading(true)
     }
     initialisation()
   }, [ loading ] )
