@@ -14,6 +14,7 @@ import
 
 export default function DailyActivity ( {activity,labels} )
 {
+  console.log (activity)
   const CustomYAxisTick = ( { x, y, payload } ) =>
   {
     const { value } = payload
@@ -62,7 +63,7 @@ export default function DailyActivity ( {activity,labels} )
         >
           <CartesianGrid vertical= {false} strokeDasharray= "3 3" />
           <XAxis
-            dataKey="dayDate"
+            dataKey="dateFormated"
             tickCount={ 7 }
             type="number"
             domain={ [ "dataMin", "dataMax" ] }
