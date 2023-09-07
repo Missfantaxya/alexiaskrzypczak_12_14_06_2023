@@ -67,10 +67,7 @@ export default function SessionDuration ( props )
       <h3 className="lenght__title">
         Durrée emoyenne des sessions
       </h3>
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-      >
+      <ResponsiveContainer>
         <LineChart
           data={ props.sessions }
           width="100%"

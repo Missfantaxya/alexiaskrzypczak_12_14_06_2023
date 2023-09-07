@@ -43,10 +43,7 @@ export default function Performances ( {
 
   return (
     <div className="graph__performances">
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-      >
+      <ResponsiveContainer >
         <RadarChart data={performances} >
           <PolarGrid
             radialLines={ false }

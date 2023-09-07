@@ -66,10 +66,7 @@ export default function DailyActivity ( {
       <h3 className="bar__title">
         Activité quotidienne
       </h3>
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-      >
+      <ResponsiveContainer >
         <BarChart
           data= { activity }
           barCategoryGap={ 8 }

@@ -17,10 +17,7 @@ export default function Score (
       <h3 className="score__title">
         Score
       </h3>
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-      >
+      <ResponsiveContainer>
         <RadialBarChart
           width="100%"
           height="100%"
