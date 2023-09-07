@@ -1,4 +1,3 @@
-// Fichier des appels API
 import axios from "axios"
 
 import
@@ -11,7 +10,7 @@ import
 
 const BASEURL = "http://localhost:3000/user"
 
-async function getUserData( idUSer )
+async function getUserData ( idUSer ) 
 {
   try {
     const response = await axios.get(`${BASEURL}/${idUSer}`)
@@ -41,13 +40,12 @@ async function getActivityData( idUSer )
   }
 }
 
-async function getSessionsData( idUSer )
+async function getSessionsData ( idUSer ) 
 {
   try {
     const response = await axios.get(`${BASEURL}/${idUSer}/average-sessions`)
     // en cas de réussite de la requête
     const sessionsValues = response.data.data
-    // const sessionsValues = response.data.data
     // Cette valeur sera résolue dans la promesse renvoyée par la fonction
     return sessionsValues
   } catch (error) {
@@ -57,12 +55,11 @@ async function getSessionsData( idUSer )
   }
 }
 
-async function getPerformanceData( idUSer )
+async function getPerformanceData ( idUSer ) 
 {
   try {
     const response = await axios.get(`${BASEURL}/${idUSer}/performance`)
     // en cas de réussite de la requête
-    // const performanceValues = response.data
     const performanceValues = response.data.data
     return performanceValues 
   } catch (error) {
@@ -72,7 +69,7 @@ async function getPerformanceData( idUSer )
   }
 }
 
-function idChoice( idUSer, array )
+function idChoice ( idUSer, array ) 
 {
   const elementValueisIdUSer = ( element ) => element.userId === idUSer
   const arrayId = array.findIndex( elementValueisIdUSer )
@@ -124,6 +121,6 @@ export default async function fetchData ( idUSer, onMock )
     sessions,
     performances,
   } )
-  }
+}
 
 

@@ -1,7 +1,10 @@
 import "./Copyright.css"
 
-export default function Copyright({year}) {
+export default function Copyright ( { year } ) 
+{
   return (
-    <p className="copyright">Copyright, SportSee {year}</p>
+    <p className="copyright">
+      Copyright, SportSee { year }
+    </p>
   )
 }

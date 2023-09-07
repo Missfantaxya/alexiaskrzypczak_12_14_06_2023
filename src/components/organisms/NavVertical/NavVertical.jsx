@@ -2,18 +2,18 @@ import "./NavVertical.css"
 import NavButtons from "../../molecules/NavButtons/NavButtons"
 import Copyright from "../../atoms/Copyright/Copyright"
 
-export default function NavVertical ( )
+export default function NavVertical () 
 {
-  // Get today's date
+  // la date du jour
   const date = new Date()
 
-  // Get the year of the current date
+  // l'année de la date
   const year = date.getFullYear()
 
   return(
-    <div className="navVertical">
+    <div className="navVertical" >
       <NavButtons />
-      <Copyright year={year}/>
+      <Copyright year={year} />
     </div>
   )
 }

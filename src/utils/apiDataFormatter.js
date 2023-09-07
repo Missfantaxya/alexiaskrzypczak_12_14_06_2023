@@ -1,7 +1,6 @@
-// Fichier de formatage de données API
 import fetchData from '../services/apiServices'
 
-export default async function formatData(idUSer, onMock)
+export default async function formatData ( idUSer, onMock ) 
 {
   const originalData = await fetchData( idUSer, onMock )
   const data = {...originalData}
@@ -56,22 +55,46 @@ export default async function formatData(idUSer, onMock)
   const activity = data.activities.sessions.map( ( element ) =>
   {
     let date = new Date( element.day )
-    return{...element, dateFormated: date.getDate()}
-  }
-  )
+    return {
+      ...element,
+      dateFormated: date.getDate()
+    }
+  } )
 
   //sessions graph------------------------
   const sessions = data.sessions.sessions
 
   const dayLabels = [
-    {dayNumber:1,dayOfWeek:"L"},
-    {dayNumber:2,dayOfWeek:"M"},
-    {dayNumber:3,dayOfWeek:"M"},
-    {dayNumber:4,dayOfWeek:"J"},
-    {dayNumber:5,dayOfWeek:"V"},
-    {dayNumber:6,dayOfWeek:"S"},
-    {dayNumber:7,dayOfWeek:"D"},
-    ]
+    {
+      dayNumber: 1,
+      dayOfWeek: "L"
+    },
+    {
+      dayNumber: 2,
+      dayOfWeek: "M"
+    },
+    {
+      dayNumber: 3,
+      dayOfWeek: "M"
+    },
+    {
+      dayNumber: 4,
+      dayOfWeek: "J"
+    },
+    {
+      dayNumber: 5,
+      dayOfWeek: "V"
+    },
+    {
+      dayNumber: 6,
+      dayOfWeek: "S"
+    },
+    {
+      dayNumber: 7,
+      dayOfWeek: "D"
+    },
+  ]
+
   sessions.map( element =>
   {
     dayLabels.map( el => 
@@ -84,9 +107,11 @@ export default async function formatData(idUSer, onMock)
   const performances = data.performances.data
   const kind = data.performances.kind
 
-  function reverseKindOrder(kind) {
+  function reverseKindOrder ( kind ) 
+  {
     const kindOrderChanged = {}
-    const keys = Object.keys(kind)
+    const keys = Object.keys( kind )
+    
     for (let i = keys.length - 1; i >= 0; i--) {
       kindOrderChanged[ keys.length - i ] = kind[ keys[ i ] ]
     }
@@ -97,7 +122,8 @@ export default async function formatData(idUSer, onMock)
 
   const labelsKind = {}
 
-  function translateToFrench(label) {
+  function translateToFrench ( label ) 
+  {
     const translations = {
       cardio: 'Cardio',
       energy: 'Énergie',
@@ -109,14 +135,15 @@ export default async function formatData(idUSer, onMock)
     return translations[label] || label;
   }
 
-  for (let key in kindOrderChanged) {
-    const translatedLabel = translateToFrench(kindOrderChanged[key])
-    labelsKind[key] = translatedLabel
+  for ( let key in kindOrderChanged ) 
+  {
+    const translatedLabel = translateToFrench( kindOrderChanged[ key ] )
+    labelsKind[ key ] = translatedLabel
   }
 
   // score graph--------------------------- 
-  const hasTodayScore = user.hasOwnProperty( "todayScore" ) 
-  const scoreValue = hasTodayScore ? user.todayScore : user.score 
+  const hasTodayScore = user.hasOwnProperty( "todayScore" )
+  const scoreValue = hasTodayScore ? user.todayScore : user.score
   const progressInPercentage = scoreValue * 100
   const userScore = [
     {

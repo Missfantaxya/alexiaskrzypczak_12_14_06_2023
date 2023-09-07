@@ -13,7 +13,14 @@ export default function Performances ( {
   labels
 } )
 {
-  const renderPolarAngleAxis = ( { payload, x, y, cx, cy, ...rest } ) =>
+  const renderPolarAngleAxis = ( {
+    payload,
+    x,
+    y,
+    cx,
+    cy,
+    ...rest
+  } ) =>
   {
     const label = labels[ payload.value ]
     
@@ -36,7 +43,10 @@ export default function Performances ( {
 
   return (
     <div className="graph__performances">
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+      >
         <RadarChart data={performances} >
           <PolarGrid
             radialLines={ false }

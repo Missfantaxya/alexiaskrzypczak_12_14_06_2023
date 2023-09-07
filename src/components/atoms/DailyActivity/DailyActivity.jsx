@@ -12,10 +12,17 @@ import
     Bar
   } from "recharts"
 
-export default function DailyActivity ( {activity,labels} )
+export default function DailyActivity ( {
+  activity,
+  labels
+} )
 {
-  console.log (activity)
-  const CustomYAxisTick = ( { x, y, payload } ) =>
+  
+  const CustomYAxisTick = ( {
+    x,
+    y,
+    payload
+  } ) =>
   {
     const { value } = payload
     
@@ -32,7 +39,11 @@ export default function DailyActivity ( {activity,labels} )
     )
   }
 
-  const CustomTooltip = ( { active, payload, label } ) =>
+  const CustomTooltip = ( {
+    active,
+    payload,
+    label
+  } ) =>
   {
     if ( active && payload && payload.length )
     {
@@ -55,13 +66,24 @@ export default function DailyActivity ( {activity,labels} )
       <h3 className="bar__title">
         Activité quotidienne
       </h3>
-      <ResponsiveContainer>
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+      >
         <BarChart
           data= { activity }
           barCategoryGap={ 8 }
-          margin={{ top: 95, right: 29, bottom: 23, left: 43 }}
+          margin={ {
+            top: 95,
+            right: 29,
+            bottom: 23,
+            left: 43
+          } }
         >
-          <CartesianGrid vertical= {false} strokeDasharray= "3 3" />
+          <CartesianGrid
+            vertical={ false }
+            strokeDasharray="3 3"
+          />
           <XAxis
             dataKey="dateFormated"
             tickCount={ 7 }
@@ -103,7 +125,11 @@ export default function DailyActivity ( {activity,labels} )
             height={24}
             iconType="circle"
             iconSize={ 8 }
-            wrapperStyle={ { top: "2.34vh", right:"1.8vw", bottom: 0 } }
+            wrapperStyle={ {
+              top: "2.34vh",
+              right: "1.8vw",
+              bottom: 0
+            } }
             formatter={ ( value, entry ) => (
               <span className="barChart__legend">
                 { entry.dataKey === 'kilogram' ? `Poids (kg)` : `Calories brûlées (kCal)` }

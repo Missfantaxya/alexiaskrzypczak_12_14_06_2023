@@ -12,13 +12,15 @@ export default function Score (
     progressInPercentage
   } )
 {
-
   return (
     <div className="graph__score">
       <h3 className="score__title">
         Score
       </h3>
-      <ResponsiveContainer width="100%" height="100%" >
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+      >
         <RadialBarChart
           width="100%"
           height="100%"
@@ -45,7 +47,7 @@ export default function Score (
           <circle
             cx="50"
             cy="50"
-            r="36%" // Le rayon du cercle blanc (ajuster selon vos besoins)
+            r="36%" // Le rayon du cercle blanc
             fill={getComputedStyle( document.documentElement ).getPropertyValue( '--circle-background-kpi' )}
           />
         </svg>

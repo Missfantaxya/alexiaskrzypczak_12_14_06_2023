@@ -6,9 +6,9 @@ import Dashboard from "../../organisms/Dashboard/Dashboard"
 export default function ProfileTemplate ( props )
 {
   return (
-    <div className="profilTemplate">
+    <div className="profilTemplate" >
       <Header />
-      <main className="main">
+      <main className="main" >
         <NavVertical />
         <Dashboard
           firstname={ props.firstname }
@@ -22,5 +22,5 @@ export default function ProfileTemplate ( props )
         />
       </main>
     </div>
-    )
+  )
 }

@@ -1,6 +1,7 @@
 import "./WelcomeTitle.css"
 
-export default function WelcomeTitle({firstname}) {
+export default function WelcomeTitle ( { firstname } ) 
+{
   return (
     <>
       <h1 className="welcomeTitle">
