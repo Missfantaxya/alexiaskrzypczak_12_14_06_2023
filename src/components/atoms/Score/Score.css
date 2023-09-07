@@ -31,7 +31,6 @@
   line-height: 2.53vh;
   font-weight: 700;
   color:var(--data-color-kpi);
-  /* background-color: var(--circle-background-kpi); */
 }
 
 .barChart__legendText{
